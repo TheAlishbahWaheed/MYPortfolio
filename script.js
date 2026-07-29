@@ -10,6 +10,7 @@ if(!isTouch){
     cur.style.left = mx+'px';
     cur.style.top  = my+'px';
     clearTimeout(pawTimer);
+    
     pawTimer = setTimeout(()=>{ spawnPaw(mx, my); }, 120);
   });
 

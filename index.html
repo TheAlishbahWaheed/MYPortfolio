@@ -3,58 +3,23 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-<title>Alishbah Waheed — IT, Cyber Security &amp; AI Researcher</title>
-<meta name="description" content="Portfolio of Alishbah Waheed — IT undergraduate specializing in AI, software engineering, cyber security and web development, based in Lahore, Pakistan."/>
-<meta name="theme-color" content="#0f2744"/>
-<meta property="og:title" content="Alishbah Waheed — IT, Cyber Security & AI Researcher"/>
-<meta property="og:description" content="IT undergraduate with experience in artificial intelligence, software engineering, and programming through academic and personal projects."/>
-<meta property="og:type" content="website"/>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<title>Alishbah Waheed — IT, AI &amp; Cyber Security</title>
+<meta name="description" content="Portfolio of Alishbah Waheed — IT undergraduate exploring AI, cyber security, software engineering and game development, based in Lahore, Pakistan."/>
+<meta name="theme-color" content="#0d2038"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
-
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="locked">
 
-<!-- SCROLL PROGRESS -->
 <div id="progress"><i id="progressBar"></i></div>
 
-<!-- CAT CURSOR -->
-<div id="cur">
-  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 63 Q66 72 62 53 Q58 39 50 50" stroke="#f0c8d8" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-    <ellipse cx="37" cy="55" rx="17" ry="15" fill="white" stroke="#f0a8c0" stroke-width="1.5"/>
-    <circle cx="37" cy="32" r="15" fill="white" stroke="#f0a8c0" stroke-width="1.5"/>
-    <polygon points="23,22 18,8 30,18" fill="white" stroke="#f0a8c0" stroke-width="1.5" stroke-linejoin="round"/>
-    <polygon points="23,20 20,11 28,18" fill="#fce8f0"/>
-    <polygon points="51,22 56,8 44,18" fill="white" stroke="#f0a8c0" stroke-width="1.5" stroke-linejoin="round"/>
-    <polygon points="51,20 54,11 46,18" fill="#fce8f0"/>
-    <path d="M29 31 Q32 28 35 31" stroke="#1a1a2e" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-    <path d="M39 31 Q42 28 45 31" stroke="#1a1a2e" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-    <circle cx="31" cy="30" r=".9" fill="white" opacity=".8"/>
-    <circle cx="41" cy="30" r=".9" fill="white" opacity=".8"/>
-    <ellipse cx="37" cy="37" rx="2.2" ry="1.6" fill="#f4b8cb"/>
-    <path d="M34.8 38.8 Q37 41 39.2 38.8" stroke="#e8849f" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-    <line x1="20" y1="36" x2="33" y2="37.5" stroke="#d8c0c8" stroke-width="1" stroke-linecap="round" opacity=".8"/>
-    <line x1="19" y1="39" x2="33" y2="38.8" stroke="#d8c0c8" stroke-width="1" stroke-linecap="round" opacity=".8"/>
-    <line x1="54" y1="36" x2="41" y2="37.5" stroke="#d8c0c8" stroke-width="1" stroke-linecap="round" opacity=".8"/>
-    <line x1="55" y1="39" x2="41" y2="38.8" stroke="#d8c0c8" stroke-width="1" stroke-linecap="round" opacity=".8"/>
-    <ellipse cx="37" cy="57" rx="8" ry="7" fill="#fdf0f4" opacity=".7"/>
-    <ellipse cx="27" cy="68" rx="7" ry="5" fill="white" stroke="#f0a8c0" stroke-width="1.5"/>
-    <ellipse cx="47" cy="68" rx="7" ry="5" fill="white" stroke="#f0a8c0" stroke-width="1.5"/>
-    <ellipse cx="23" cy="67.5" rx="2" ry="1.4" fill="#fce8f0"/>
-    <ellipse cx="27" cy="66.5" rx="2" ry="1.4" fill="#fce8f0"/>
-    <ellipse cx="31" cy="67.5" rx="2" ry="1.4" fill="#fce8f0"/>
-    <ellipse cx="43" cy="67.5" rx="2" ry="1.4" fill="#fce8f0"/>
-    <ellipse cx="47" cy="66.5" rx="2" ry="1.4" fill="#fce8f0"/>
-    <ellipse cx="51" cy="67.5" rx="2" ry="1.4" fill="#fce8f0"/>
-  </svg>
-</div>
+<div id="cur"></div>
 <div class="cursor-label" id="curLabel"></div>
 
 <!-- ═══ INTRO ═══ -->
 <div id="intro">
+  <div class="intro-grid"></div>
   <div class="intro-blob1"></div>
   <div class="intro-blob2"></div>
   <div class="curtain-t"></div>
@@ -71,7 +36,9 @@
         <span class="fn-first">Alishbah&nbsp;</span><span class="fn-last">Waheed</span>
       </div>
     </div>
-    <div class="intro-tagline" id="introTagline">IT, Cyber Security &amp; AI Researcher</div>
+    <div class="intro-boot" id="introBoot">
+      <span class="boot-line">initializing<span class="boot-dots">...</span></span>
+    </div>
   </div>
 
   <div class="intro-line"></div>
@@ -81,238 +48,267 @@
 <nav id="nav">
   <div class="nav-brand">Alishbah<span>.</span></div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#home" data-cursor-text="">Home</a></li>
-    <li><a href="#about" data-cursor-text="">About</a></li>
-    <li><a href="#skills" data-cursor-text="">Skills</a></li>
-    <li><a href="#experience" data-cursor-text="">Experience</a></li>
-    <li><a href="#education" data-cursor-text="">Education</a></li>
-    <li><a href="#projects" data-cursor-text="">Projects</a></li>
-    <li><a href="#extras" data-cursor-text="">More</a></li>
-    <li><a href="#contact" data-cursor-text="">Contact</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#explore">Explore</a></li>
+    <li><a href="#gamelab">Game Lab</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-cursor-text="">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7" stroke-linecap="round"/></svg>
       <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
     </button>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="nav-scrim" id="navScrim"></div>
 <div class="nav-mobile-panel" id="navMobilePanel">
   <a href="#home">Home</a>
   <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#education">Education</a>
+  <a href="#explore">Explore</a>
+  <a href="#gamelab">Game Lab</a>
   <a href="#projects">Projects</a>
-  <a href="#extras">More</a>
   <a href="#contact">Contact</a>
 </div>
 
 <!-- ═══ HERO ═══ -->
 <section id="home">
-  <div class="hero-mesh" data-parallax="0.15"></div>
-  <div class="hero-grid-lines"></div>
-  <div class="hero-deco-letter" data-parallax="0.3">A</div>
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-deco-letter" data-parallax="0.25">A</div>
 
   <div class="hero-inner">
-    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>IT, Cyber Security &amp; AI Researcher · Lahore, Pakistan</div>
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>IT Undergraduate · Lahore, Pakistan</div>
     <h1 class="hero-title">
       <span class="t-line1">Alishbah</span>
       <span class="t-line2">Waheed</span>
     </h1>
+    <div class="hero-terminal">
+      <span class="term-prompt">alishbah@dev</span><span class="term-sep">:~$</span>
+      <span class="term-typed" id="termTyped"></span><span class="term-cursor">▌</span>
+    </div>
     <p class="hero-sub">
-      An <strong>IT undergraduate</strong> with experience in artificial intelligence, software engineering, and programming through academic and personal projects. Skilled in building Python-based applications and applying problem-solving techniques to real-world challenges.
+      An IT undergraduate with experience in artificial intelligence, software engineering, programming and <strong>basic game development</strong>, through academic and personal projects — skilled at turning analytical problem-solving into practical, working software.
     </p>
     <div class="hero-ctas">
       <a href="#contact" class="cta-main magnetic" data-cursor-text="Say hi">Let's Connect →</a>
-      <a href="Resume.pdf" target="_blank" class="cta-ghost magnetic" data-cursor-text="View">View Resume ↗</a>
-      <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="cta-ghost magnetic" data-cursor-text="Open">View GitHub ↗</a>
+      <a href="Resume.pdf" target="_blank" class="cta-ghost magnetic" data-cursor-text="View">Resume ↗</a>
+      <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="cta-ghost magnetic" data-cursor-text="Open">GitHub ↗</a>
     </div>
   </div>
 
-  <div class="scroll-hint">
-    <span>Scroll</span><div class="scroll-line"></div>
-  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- ═══ ABOUT ═══ -->
+<!-- ═══ ABOUT (compact) ═══ -->
 <section id="about">
   <div class="container">
     <div class="about-layout">
       <div class="rv-l">
         <div class="s-head">
-          <p class="s-label">About Me</p>
-          <h2 class="s-title split">Passionate about <em>smart systems</em></h2>
+          <p class="s-label">01 · About</p>
+          <h2 class="s-title split">Curious about <em>smart systems</em></h2>
         </div>
         <div class="about-body">
-          <p>I am an IT undergraduate at the University of Management &amp; Technology, passionate about building smart systems and exploring modern technologies. My interests span software development, cyber analytics, artificial intelligence, and creating interactive web applications.</p>
-          <div class="about-highlight">"An IT undergraduate with experience in artificial intelligence, software engineering, and programming through academic and personal projects."</div>
-          <p>Through my coursework, internships, and personal projects, I am gaining hands-on experience across Python, C++, and web development fundamentals, applying logical thinking and computational reasoning to every challenge while continuously expanding my technical expertise and collaborative abilities.</p>
+          <p>I'm an IT undergraduate at the University of Management &amp; Technology, drawn to how software, security and intelligent systems fit together. My work spans software development, cyber analytics, artificial intelligence, and — more recently — game development with Unity and C#.</p>
+          <p>Through coursework, internships and personal projects, I've built hands-on experience across Python, C++, C#, and the web stack — applying logical thinking to every problem, one build at a time.</p>
         </div>
       </div>
-      <div class="about-cards rv-r">
-        <div class="acard tilt">
-          <h3>Programming &amp; Web Development</h3>
-          <p>Building projects using Python, C++, HTML, CSS, JavaScript, and PHP. Developing web apps and interactive systems to strengthen coding fundamentals.</p>
-        </div>
-        <div class="acard tilt">
-          <h3>AI &amp; Machine Learning Basics</h3>
-          <p>Learning foundational AI and ML concepts along with AI automation and n8n automation models, practicing Python and its libraries to understand how computers learn from data and make predictions.</p>
-        </div>
-        <div class="acard tilt">
-          <h3>Problem-Solving &amp; Logic</h3>
-          <p>Applying computational thinking, algorithm design, and logical reasoning to improve coding efficiency and practical solutions.</p>
-        </div>
+      <div class="about-stats rv-r">
+        <div class="stat-card tilt"><span class="stat-num">03+</span><span class="stat-lbl">Internships &amp; Programs</span></div>
+        <div class="stat-card tilt"><span class="stat-num">07</span><span class="stat-lbl">Projects Shipped</span></div>
+        <div class="stat-card tilt"><span class="stat-num">05</span><span class="stat-lbl">Certifications Earned</span></div>
+        <div class="stat-card tilt wide"><span class="stat-num">2028</span><span class="stat-lbl">Expected BS(IT) Graduation · UMT Lahore</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ SKILLS ═══ -->
-<section id="skills">
+<!-- ═══ EXPLORE — TABBED TERMINAL (skills / experience / education / achievements) ═══ -->
+<section id="explore">
   <div class="container">
     <div class="s-head rv">
-      <p class="s-label">Skills &amp; Expertise</p>
-      <h2 class="s-title split">What I <em>work with</em></h2>
+      <p class="s-label">02 · Explore</p>
+      <h2 class="s-title split">One console, <em>four files</em></h2>
     </div>
-    <div class="skills-bento">
-      <div class="skill-tile wide tilt rv">
-        <div class="tile-label">Programming Languages</div>
-        <div class="tile-desc">Core languages used across projects, internships, and coursework with growing proficiency.</div>
-        <div class="tile-tags">
-          <span class="ttag">Python</span>
-          <span class="ttag">C++</span>
-          <span class="ttag">C</span>
-          <span class="ttag">HTML5</span>
-          <span class="ttag">CSS3</span>
-          <span class="ttag">JavaScript</span>
-          <span class="ttag">SQL</span>
-          <span class="ttag">PHP</span>
-          <span class="ttag">Assembly Language</span>
-          <span class="ttag">Bootstrap</span>
-          <span class="ttag">C#</span>
-        </div>
+
+    <div class="term-window rv">
+      <div class="term-bar">
+        <div class="term-dots"><span></span><span></span><span></span></div>
+        <div class="term-path">~/alishbah/explore</div>
       </div>
-      <div class="skill-tile tilt rv">
-        <div class="tile-label">Frameworks &amp; Libraries</div>
-        <div class="tile-desc">Tools used to build data-driven and web-based applications.</div>
-        <div class="tile-tags">
-          <span class="ttag">NumPy</span>
-          <span class="ttag">Pandas</span>
-          <span class="ttag">MySQL</span>
-          <span class="ttag">BeautifulSoup</span>
-          <span class="ttag">Flask</span>
-          <span class="ttag">Threading</span>
-        </div>
+      <div class="term-tabs" id="termTabs">
+        <button class="term-tab active" data-panel="skills">skills.json</button>
+        <button class="term-tab" data-panel="experience">experience.log</button>
+        <button class="term-tab" data-panel="education">education.md</button>
+        <button class="term-tab" data-panel="achievements">achievements.txt</button>
       </div>
-      <div class="skill-tile tilt rv">
-        <div class="tile-label">Tools &amp; Platforms</div>
-        <div class="tile-desc">Daily development, version control, and networking environments.</div>
-        <div class="tile-tags">
-          <span class="ttag">VS Code</span>
-          <span class="ttag">PyCharm</span>
-          <span class="ttag">Jupyter Notebook</span>
-          <span class="ttag">Git</span>
-          <span class="ttag">GitHub</span>
-          <span class="ttag">Git Bash</span>
-          <span class="ttag">Google Colab</span>
-          <span class="ttag">Cisco Packet Tracer</span>
-          <span class="ttag">Unity</span>
+
+      <div class="term-body">
+
+        <!-- SKILLS -->
+        <div class="term-panel active" id="panel-skills">
+          <div class="skills-bento">
+            <div class="skill-tile wide tilt">
+              <div class="tile-label">Programming Languages</div>
+              <div class="tile-tags">
+                <span class="ttag">Python</span><span class="ttag">C++</span><span class="ttag">C</span><span class="ttag">C#</span>
+                <span class="ttag">HTML5</span><span class="ttag">CSS3</span><span class="ttag">JavaScript</span>
+                <span class="ttag">SQL</span><span class="ttag">PHP</span><span class="ttag">Assembly Language</span><span class="ttag">Bootstrap</span>
+              </div>
+            </div>
+            <div class="skill-tile tilt">
+              <div class="tile-label">Frameworks &amp; Libraries</div>
+              <div class="tile-tags">
+                <span class="ttag">NumPy</span><span class="ttag">Pandas</span><span class="ttag">MySQL</span>
+                <span class="ttag">BeautifulSoup</span><span class="ttag">Flask</span><span class="ttag">Threading</span>
+              </div>
+            </div>
+            <div class="skill-tile tilt">
+              <div class="tile-label">Tools &amp; Platforms</div>
+              <div class="tile-tags">
+                <span class="ttag">VS Code</span><span class="ttag">PyCharm</span><span class="ttag">Jupyter</span>
+                <span class="ttag">Git &amp; GitHub</span><span class="ttag">Git Bash</span><span class="ttag">Google Colab</span>
+                <span class="ttag">Cisco Packet Tracer</span><span class="ttag">Unity Hub</span>
+              </div>
+            </div>
+            <div class="skill-tile tilt">
+              <div class="tile-label">AI, ML &amp; Game Dev</div>
+              <div class="tile-tags">
+                <span class="ttag">Foundational ML</span><span class="ttag">AI Automation</span><span class="ttag">n8n</span>
+                <span class="ttag">Unity</span><span class="ttag">C# Scripting</span><span class="ttag">Basic Game Dev</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="skill-tile tilt rv">
-        <div class="tile-label">AI &amp; ML Basics</div>
-        <div class="tile-desc">Implementing simple ML algorithms and data-driven Python projects, exploring foundational AI concepts.</div>
+
+        <!-- EXPERIENCE -->
+        <div class="term-panel" id="panel-experience">
+          <div class="exp-wrap">
+            <div class="exp-node">
+              <div class="exp-chip">07/2026</div>
+              <div class="exp-where">FlyRank AI · Remote, Pakistan</div>
+              <div class="exp-card">
+                <h3>AI Intern</h3>
+                <ul>
+                  <li>Developed responsive web interfaces using HTML, CSS and JavaScript with AI-assisted development practices.</li>
+                  <li>Applied AI tools to accelerate frontend development, debugging and code optimization across hands-on assignments and a capstone project.</li>
+                  <li>Built portfolio-ready frontend projects while strengthening modern web development and AI integration skills.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="exp-node">
+              <div class="exp-chip">12/2025</div>
+              <div class="exp-where">American Lycetuff School · Lahore, Pakistan</div>
+              <div class="exp-card">
+                <h3>Cyber-Security Workshop — Team Lead</h3>
+                <p>Conducted an interactive workshop for 25+ students on online safety, password security and threat awareness, with hands-on activities promoting digital literacy.</p>
+              </div>
+            </div>
+            <div class="exp-node">
+              <div class="exp-chip">12/2025</div>
+              <div class="exp-where">CodeAlpha · Remote, Pakistan</div>
+              <div class="exp-card">
+                <h3>Python Programming Intern</h3>
+                <p>Developed Python projects involving automation, chatbots and game-based applications, applying OOP, functions, file handling and data structures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="term-panel" id="panel-education">
+          <div class="exp-wrap">
+            <div class="exp-node">
+              <div class="exp-chip">10/2024 – 07/2028</div>
+              <div class="exp-where">University of Management &amp; Technology · Lahore, Pakistan</div>
+              <div class="exp-card">
+                <h3>BS in Information Technology</h3>
+                <div class="exp-courses"><strong>Core:</strong> OOP · Data Structures · Assembly Language · Software Engineering · Database Systems · Computer Networks · Web Technologies · Open-Source Software Development</div>
+              </div>
+            </div>
+            <div class="exp-node">
+              <div class="exp-chip">2025 – 2026</div>
+              <div class="exp-where">Aspire Institute · Massachusetts, USA (Virtual)</div>
+              <div class="exp-card">
+                <h3>Aspire Leadership Program</h3>
+                <p>International online program developing leadership, teamwork, communication and digital collaboration skills.</p>
+              </div>
+            </div>
+            <div class="exp-node">
+              <div class="exp-chip">2022 – 2024</div>
+              <div class="exp-where">Lahore College for Women University · Lahore, Pakistan</div>
+              <div class="exp-card">
+                <h3>ICS – Physics</h3>
+                <div class="exp-courses"><strong>Core:</strong> Physics · Mathematics · Computer Science (C Language / Database)</div>
+              </div>
+            </div>
+            <div class="exp-node">
+              <div class="exp-chip">2009 – 2022</div>
+              <div class="exp-where">American Lycetuff School · Lahore, Pakistan</div>
+              <div class="exp-card">
+                <h3>Computer Science</h3>
+                <div class="exp-courses"><strong>Core:</strong> Mathematics · Physics · Chemistry · Computer Science</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <div class="term-panel" id="panel-achievements">
+          <div class="extras-layout">
+            <div class="cert-list">
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">360-Degree Transformation Program</div><div class="cert-by">Certificate · University of Management &amp; Technology</div></div></div>
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">Python Programming</div><div class="cert-by">E-Certificate · FreeCodeCamp</div></div></div>
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">Introduction to Artificial Intelligence</div><div class="cert-by">E-Certificate · Coursera.org</div></div></div>
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">Introduction to IT &amp; AWS Cloud</div><div class="cert-by">E-Certificate · AWS</div></div></div>
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">Cyber Security Analyst</div><div class="cert-by">E-Certificate · Forage</div></div></div>
+              <div class="cert-item"><div class="cert-info"><div class="cert-name">Anthropic Courses</div><div class="cert-by">E-Certificates · Anthropic</div></div></div>
+            </div>
+            <div class="lang-box">
+              <h3>Languages</h3>
+              <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+              <div class="lang-row"><span class="lang-name">Urdu</span><span class="lang-level">Native</span></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ EXPERIENCE ═══ -->
-<section id="experience">
+<!-- ═══ GAME LAB — Unity / C# spotlight with a live playable demo ═══ -->
+<section id="gamelab">
   <div class="container">
-    <div class="s-head rv">
-      <p class="s-label">Experience</p>
-      <h2 class="s-title split">Where I've <em>contributed</em></h2>
-    </div>
-    <div class="exp-wrap">
-      <div class="exp-node rv">
-        <div class="exp-chip">Dec 2025</div>
-        <div class="exp-where">American Lycetuff School · Lahore, Pakistan</div>
-        <div class="exp-card">
-          <h3>Cyber-Security Workshop, Team Lead</h3>
-          <p>Conducted an interactive cybersecurity workshop for over 25 junior students, focusing on online safety, password security, and threat awareness.</p>
-          <p>Delivered hands-on activities and practical demonstrations to promote digital literacy and safe technology practices, enhancing students' understanding of digital risks and protective measures.</p>
+    <div class="gl-layout">
+      <div class="rv-l">
+        <div class="s-head">
+          <p class="s-label">03 · Game Lab</p>
+          <h2 class="s-title split">Learning <em>Unity &amp; C#</em></h2>
+        </div>
+        <div class="about-body">
+          <p>Alongside software and security work, I'm building foundational game-development skills — scripting gameplay logic in <strong>C#</strong>, prototyping mechanics in <strong>Unity Hub</strong>, and thinking through the same problem-solving process that drives my other projects: understand the system, break it into rules, then build it.</p>
+          <p>The mini-game to the right isn't Unity — it's a small browser build in vanilla JavaScript — but it runs on the same fundamentals I'm practicing: game loops, collision detection and state management.</p>
+        </div>
+        <div class="tile-tags gl-tags">
+          <span class="ttag">Unity Hub</span><span class="ttag">C# Scripting</span><span class="ttag">Game Loops</span><span class="ttag">Collision Logic</span><span class="ttag">Prototyping</span>
         </div>
       </div>
-      <div class="exp-node rv">
-        <div class="exp-chip">Dec 2025</div>
-        <div class="exp-where">CodeAlpha · Remote, Pakistan</div>
-        <div class="exp-card">
-          <h3>Python Programming Intern</h3>
-          <p>Developed Python projects involving automation, chatbots, and game-based applications.</p>
-          <p>Applied core Python concepts including file handling, OOP, functions, and data structures.</p>
-        </div>
-      </div>
-      <div class="exp-node rv">
-        <div class="exp-chip">July 2026</div>
-        <div class="exp-where">FlyRank AI · Remote, Pakistan</div>
-        <div class="exp-card">
-          <h3>Python Intern</h3>
-          <ul>
-            <li>Developed responsive web interfaces using HTML, CSS, and JavaScript with AI-assisted development practices.</li>
-            <li>Applied AI tools to accelerate frontend development, debugging, and code optimization through hands-on assignments and a capstone project.</li>
-            <li>Built portfolio-ready frontend projects while strengthening modern web development and AI integration skills.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══ EDUCATION ═══ -->
-<section id="education">
-  <div class="container">
-    <div class="s-head rv">
-      <p class="s-label">Education</p>
-      <h2 class="s-title split">How I got <em>here</em></h2>
-    </div>
-    <div class="exp-wrap">
-      <div class="exp-node rv">
-        <div class="exp-chip">10/2024 – 07/2028</div>
-        <div class="exp-where">University of Management &amp; Technology · Lahore, Pakistan</div>
-        <div class="exp-card">
-          <h3>BS in Information Technology</h3>
-          <div class="exp-courses"><strong>Core courses:</strong> Object Oriented Programming, Data Structures, Assembly Language, Software Engineering, Database Systems, Computer Networks, Web Technologies, Open-Source Software Development</div>
+      <div class="gl-console rv-r">
+        <div class="term-bar">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <div class="term-path">byte_dash.exe</div>
         </div>
-      </div>
-      <div class="exp-node rv">
-        <div class="exp-chip">2022 - 2024</div>
-        <div class="exp-where">Lahore College for Women University · Lahore, Pakistan</div>
-        <div class="exp-card">
-          <h3>ICS - Physics</h3>
-          <div class="exp-courses"><strong>Core courses:</strong> Physics, Mathematics, Computer Science (C Language/Database)</div>
+        <div class="gl-hud">
+          <span>SCORE <b id="glScore">0</b></span>
+          <span>BEST <b id="glBest">0</b></span>
+          <span id="glState">← → or drag to move</span>
         </div>
-      </div>
-      <div class="exp-node rv">
-        <div class="exp-chip">2009 - 2022</div>
-        <div class="exp-where">American Lycetuff School · Lahore, Pakistan</div>
-        <div class="exp-card">
-          <h3>Computer Science</h3>
-          <div class="exp-courses"><strong>Core courses:</strong> Mathematics, Physics, Chemistry, and Computer Science, establishing core scientific and computing knowledge.</div>
-        </div>
-      </div>
-      <div class="exp-node rv">
-        <div class="exp-chip">2025 - 2026</div>
-        <div class="exp-where">Aspire Institute · Massachusetts, United States (Virtual)</div>
-        <div class="exp-card">
-          <h3>Aspire Leadership Program</h3>
-          <p>An international online program developing leadership, teamwork, communication, and digital collaboration skills.</p>
-        </div>
+        <canvas id="gameCanvas" width="520" height="340"></canvas>
+        <button class="gl-btn magnetic" id="glRestart">Restart ↻</button>
       </div>
     </div>
   </div>
@@ -322,7 +318,7 @@
 <section id="projects">
   <div class="container">
     <div class="s-head rv">
-      <p class="s-label">Projects</p>
+      <p class="s-label">04 · Projects</p>
       <h2 class="s-title split">Things I've <em>built</em></h2>
     </div>
 
@@ -336,135 +332,55 @@
     <div class="proj-grid" id="projGrid">
       <div class="proj-card tilt rv" data-tags="web">
         <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">01 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
+        <div class="proj-top"><div class="proj-idx">01</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
         <div class="proj-title">Real-Time Chat System</div>
         <p class="proj-body">A real-time messaging application demonstrating live communication between users, built with a focus on responsive interaction and clean, structured code.</p>
-        <div class="proj-stack">
-          <span class="pchip">C++</span><span class="pchip">Console Based Application</span><span class="pchip">Real-Time</span>
-        </div>
+        <div class="proj-stack"><span class="pchip">C++</span><span class="pchip">Console App</span><span class="pchip">Real-Time</span></div>
       </div>
       <div class="proj-card tilt rv" data-tags="python web">
         <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">02 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
+        <div class="proj-top"><div class="proj-idx">02</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
         <div class="proj-title">Smart Home Automation System</div>
-        <p class="proj-body">A Python-based smart home simulation implementing structured design and data handling principles. Manages devices, automates tasks, and demonstrates practical use of DSA concepts for efficient, real-world system operation.</p>
-        <div class="proj-stack">
-          <span class="pchip">Python</span><span class="pchip">SQL</span><span class="pchip">Automation</span><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span>
-        </div>
+        <p class="proj-body">A Python-based smart home simulation applying structured design and data-handling principles to manage devices and automate tasks using DSA concepts.</p>
+        <div class="proj-stack"><span class="pchip">Python</span><span class="pchip">SQL</span><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span></div>
       </div>
       <div class="proj-card tilt rv" data-tags="web">
         <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">03 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
+        <div class="proj-top"><div class="proj-idx">03</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
         <div class="proj-title">DSA Visualizer</div>
-        <p class="proj-body">An interactive tool for visualizing data structures and algorithms in action, built to make abstract computational concepts easier to understand and explore.</p>
-        <div class="proj-stack">
-          <span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">BootStrap</span><span class="pchip">JavaScript</span>
-        </div>
-      </div>
-      <div class="proj-card tilt rv" data-tags="web">
-        <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">04 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
-        <div class="proj-title">My-Portfolio</div>
-        <p class="proj-body">This personal portfolio website — a fully custom, animated single-page site showcasing my education, skills, experience, and projects.</p>
-        <div class="proj-stack">
-          <span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span>
-        </div>
+        <p class="proj-body">An interactive tool for visualizing data structures and algorithms in action, making abstract computational concepts easier to explore.</p>
+        <div class="proj-stack"><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">Bootstrap</span><span class="pchip">JavaScript</span></div>
       </div>
       <div class="proj-card tilt rv" data-tags="python ai">
         <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">05 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
+        <div class="proj-top"><div class="proj-idx">04</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
         <div class="proj-title">AI-Resume Analyzer</div>
-        <p class="proj-body">A Python tool that parses and evaluates resumes, applying data handling and text-processing techniques to surface structured insights from unstructured documents.</p>
-        <div class="proj-stack">
-          <span class="pchip">Python</span><span class="pchip">Flask</span><span class="pchip">Text Processing</span><span class="pchip">HTML</span><span class="pchip">SQL</span>
-        </div>
+        <p class="proj-body">A Python tool that parses and evaluates resumes, applying data handling and text-processing techniques to surface structured insight from unstructured documents.</p>
+        <div class="proj-stack"><span class="pchip">Python</span><span class="pchip">Flask</span><span class="pchip">Text Processing</span><span class="pchip">SQL</span></div>
       </div>
       <div class="proj-card tilt rv" data-tags="python web">
         <div class="proj-card-shine"></div>
-        <div class="proj-top">
-          <div class="proj-idx">06 — Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
-        </div>
-        <div class="proj-title">Reflecto - Open-Source Project</div>
-        <p class="proj-body">A personal productivity web app covering mood tracking, journaling, study notes, and task management, built in both PHP and Python/Flask versions with PDF export and theme switching.</p>
-        <div class="proj-stack">
-          <span class="pchip">Flask</span><span class="pchip">Python</span><span class="pchip">JSON</span><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span><span class="pchip">Vercel</span>
-        </div>
+        <div class="proj-top"><div class="proj-idx">05</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
+        <div class="proj-title">Reflecto — Open-Source Project</div>
+        <p class="proj-body">A personal productivity web app for mood tracking, journaling, notes and tasks, built in both PHP and Python/Flask versions with PDF export and theme switching.</p>
+        <div class="proj-stack"><span class="pchip">Flask</span><span class="pchip">Python</span><span class="pchip">JSON</span><span class="pchip">JavaScript</span><span class="pchip">Vercel</span></div>
+      </div>
+      <div class="proj-card tilt rv" data-tags="web ai">
+        <div class="proj-card-shine"></div>
+        <div class="proj-top"><div class="proj-idx">06</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
+        <div class="proj-title">FlyRank AI Internship Capstone</div>
+        <p class="proj-body">A capstone frontend build combining responsive interfaces with AI-assisted development practices, from debugging to code optimization.</p>
+        <div class="proj-stack"><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span><span class="pchip">AI Tools</span></div>
+      </div>
+      <div class="proj-card tilt rv" data-tags="web">
+        <div class="proj-card-shine"></div>
+        <div class="proj-top"><div class="proj-idx">07</div><a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a></div>
+        <div class="proj-title">My-Portfolio</div>
+        <p class="proj-body">This personal portfolio — a fully custom, animated single-page site showcasing education, skills, experience and projects.</p>
+        <div class="proj-stack"><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span></div>
       </div>
     </div>
     <p class="proj-empty" id="projEmpty">No projects match this filter yet — check back soon.</p>
-  </div>
-</section>
-
-<!-- ═══ ACHIEVEMENTS & LANGUAGES ═══ -->
-<section id="extras">
-  <div class="container">
-    <div class="s-head rv">
-      <p class="s-label">Achievements &amp; Languages</p>
-      <h2 class="s-title split">Certifications &amp; <em>languages</em></h2>
-    </div>
-    <div class="extras-layout">
-      <div class="cert-list rv-l">
-        <div class="cert-item">
-          <div class="cert-info">
-            <div class="cert-name">360-Degree Transformation Program</div>
-            <div class="cert-by">Certificate · University of Management and Technology</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-info">
-            <div class="cert-name">Python Programming</div>
-            <div class="cert-by">E-Certificate · FreeCodeCamp</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-info">
-            <div class="cert-name">Introduction to Artificial Intelligence</div>
-            <div class="cert-by">E-Certificate · Coursera.org</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-info">
-            <div class="cert-name">Introduction to Information Technology &amp; AWS Cloud</div>
-            <div class="cert-by">E-Certificate · AWS</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-info">
-            <div class="cert-name">Cyber Security Analyst</div>
-            <div class="cert-by">E-Certificate · Forage</div>
-          </div>
-        </div>
-      </div>
-      <div class="rv-r">
-        <div class="lang-box">
-          <h3>Languages</h3>
-          <div class="lang-row">
-            <span class="lang-name">English</span>
-            <span class="lang-level">Professional</span>
-          </div>
-          <div class="lang-row">
-            <span class="lang-name">Urdu</span>
-            <span class="lang-level">Native</span>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -472,44 +388,18 @@
 <section id="contact">
   <div class="container">
     <div class="s-head rv">
-      <p class="s-label">Get In Touch</p>
+      <p class="s-label">05 · Contact</p>
       <h2 class="s-title split">Let's <em>connect</em></h2>
     </div>
     <div class="contact-layout">
       <div class="rv-l">
         <p>Have a project in mind, a collaboration idea, or just want to talk tech? I'd love to hear from you.</p>
-        <div class="contact-brand">
-          Alishbah Waheed
-          <span class="contact-brand-role">IT &amp; AI Researcher</span>
-        </div>
+        <div class="contact-brand">Alishbah Waheed<span class="contact-brand-role">IT · AI · Cyber Security</span></div>
         <div class="clinks">
-          <a href="mailto:alishbaw026@gmail.com" class="clink" data-cursor-text="Email">
-            <div class="clink-info">
-              <div class="clink-lbl">Email</div>
-              <div class="clink-val">alishbaw026@gmail.com</div>
-            </div>
-            <span class="clink-arr">→</span>
-          </a>
-          <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" class="clink" data-cursor-text="Open">
-            <div class="clink-info">
-              <div class="clink-lbl">LinkedIn</div>
-              <div class="clink-val">linkedin.com/in/alishbahwaheed</div>
-            </div>
-            <span class="clink-arr">→</span>
-          </a>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="clink" data-cursor-text="Open">
-            <div class="clink-info">
-              <div class="clink-lbl">GitHub</div>
-              <div class="clink-val">github.com/TheAlishbahWaheed</div>
-            </div>
-            <span class="clink-arr">→</span>
-          </a>
-          <a href="#" class="clink">
-            <div class="clink-info">
-              <div class="clink-lbl">Location</div>
-              <div class="clink-val">Lahore, Pakistan</div>
-            </div>
-          </a>
+          <a href="mailto:alishbaw026@gmail.com" class="clink" data-cursor-text="Email"><div class="clink-info"><div class="clink-lbl">Email</div><div class="clink-val">alishbaw026@gmail.com</div></div><span class="clink-arr">→</span></a>
+          <a href="tel:+923024669967" class="clink" data-cursor-text="Call"><div class="clink-info"><div class="clink-lbl">Phone</div><div class="clink-val">+92 302 4669967</div></div><span class="clink-arr">→</span></a>
+          <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" class="clink" data-cursor-text="Open"><div class="clink-info"><div class="clink-lbl">LinkedIn</div><div class="clink-val">linkedin.com/in/alishbahwaheed</div></div><span class="clink-arr">→</span></a>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="clink" data-cursor-text="Open"><div class="clink-info"><div class="clink-lbl">GitHub</div><div class="clink-val">github.com/TheAlishbahWaheed</div></div><span class="clink-arr">→</span></a>
         </div>
       </div>
       <form class="cf rv-r" id="contactForm">
@@ -526,13 +416,11 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-brand">Alishbah<span>.</span></div>
   <div class="footer-copy">Made with love by Alishbah Waheed</div>
 </footer>
 
-<!-- BACK TO TOP -->
 <button id="toTop" aria-label="Back to top">↑</button>
 
 <script src="script.js"></script>

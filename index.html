@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-  
-  
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"/>
-<title>Alishbah Waheed, IT & AI Researcher</title>
+<title>Alishbah Waheed — IT, Cyber Security &amp; AI Researcher</title>
+<meta name="description" content="Portfolio of Alishbah Waheed — IT undergraduate specializing in AI, software engineering, cyber security and web development, based in Lahore, Pakistan."/>
+<meta name="theme-color" content="#0f2744"/>
+<meta property="og:title" content="Alishbah Waheed — IT, Cyber Security & AI Researcher"/>
+<meta property="og:description" content="IT undergraduate with experience in artificial intelligence, software engineering, and programming through academic and personal projects."/>
+<meta property="og:type" content="website"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
-  
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="locked">
+
+<!-- SCROLL PROGRESS -->
+<div id="progress"><i id="progressBar"></i></div>
 
 <!-- CAT CURSOR -->
 <div id="cur">
@@ -44,6 +51,7 @@
     <ellipse cx="51" cy="67.5" rx="2" ry="1.4" fill="#fce8f0"/>
   </svg>
 </div>
+<div class="cursor-label" id="curLabel"></div>
 
 <!-- ═══ INTRO ═══ -->
 <div id="intro">
@@ -72,19 +80,25 @@
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
   <div class="nav-brand">Alishbah<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#extras">More</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" data-cursor-text="">Home</a></li>
+    <li><a href="#about" data-cursor-text="">About</a></li>
+    <li><a href="#skills" data-cursor-text="">Skills</a></li>
+    <li><a href="#experience" data-cursor-text="">Experience</a></li>
+    <li><a href="#education" data-cursor-text="">Education</a></li>
+    <li><a href="#projects" data-cursor-text="">Projects</a></li>
+    <li><a href="#extras" data-cursor-text="">More</a></li>
+    <li><a href="#contact" data-cursor-text="">Contact</a></li>
   </ul>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-cursor-text="">
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7" stroke-linecap="round"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 <div class="nav-scrim" id="navScrim"></div>
 <div class="nav-mobile-panel" id="navMobilePanel">
@@ -100,9 +114,9 @@
 
 <!-- ═══ HERO ═══ -->
 <section id="home">
-  <div class="hero-mesh"></div>
+  <div class="hero-mesh" data-parallax="0.15"></div>
   <div class="hero-grid-lines"></div>
-  <div class="hero-deco-letter">A</div>
+  <div class="hero-deco-letter" data-parallax="0.3">A</div>
 
   <div class="hero-inner">
     <div class="hero-eyebrow"><span class="eyebrow-dot"></span>IT, Cyber Security &amp; AI Researcher · Lahore, Pakistan</div>
@@ -114,12 +128,15 @@
       An <strong>IT undergraduate</strong> with experience in artificial intelligence, software engineering, and programming through academic and personal projects. Skilled in building Python-based applications and applying problem-solving techniques to real-world challenges.
     </p>
     <div class="hero-ctas">
-      <a href="#contact" class="cta-main">Let's Connect →</a>
-      <a href="C:\Users\HP\OneDrive\Desktop\Resume.pdf" target="_blank" class="cta-ghost">View Resume ↗</a>
-      <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="cta-ghost">View GitHub ↗</a>
+      <a href="#contact" class="cta-main magnetic" data-cursor-text="Say hi">Let's Connect →</a>
+      <a href="Resume.pdf" target="_blank" class="cta-ghost magnetic" data-cursor-text="View">View Resume ↗</a>
+      <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="cta-ghost magnetic" data-cursor-text="Open">View GitHub ↗</a>
     </div>
   </div>
 
+  <div class="scroll-hint">
+    <span>Scroll</span><div class="scroll-line"></div>
+  </div>
 </section>
 
 <!-- ═══ ABOUT ═══ -->
@@ -129,7 +146,7 @@
       <div class="rv-l">
         <div class="s-head">
           <p class="s-label">About Me</p>
-          <h2 class="s-title">Passionate about <em>smart systems</em></h2>
+          <h2 class="s-title split">Passionate about <em>smart systems</em></h2>
         </div>
         <div class="about-body">
           <p>I am an IT undergraduate at the University of Management &amp; Technology, passionate about building smart systems and exploring modern technologies. My interests span software development, cyber analytics, artificial intelligence, and creating interactive web applications.</p>
@@ -138,15 +155,15 @@
         </div>
       </div>
       <div class="about-cards rv-r">
-        <div class="acard">
+        <div class="acard tilt">
           <h3>Programming &amp; Web Development</h3>
           <p>Building projects using Python, C++, HTML, CSS, JavaScript, and PHP. Developing web apps and interactive systems to strengthen coding fundamentals.</p>
         </div>
-        <div class="acard">
+        <div class="acard tilt">
           <h3>AI &amp; Machine Learning Basics</h3>
           <p>Learning foundational AI and ML concepts along with AI automation and n8n automation models, practicing Python and its libraries to understand how computers learn from data and make predictions.</p>
         </div>
-        <div class="acard">
+        <div class="acard tilt">
           <h3>Problem-Solving &amp; Logic</h3>
           <p>Applying computational thinking, algorithm design, and logical reasoning to improve coding efficiency and practical solutions.</p>
         </div>
@@ -160,10 +177,10 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Skills &amp; Expertise</p>
-      <h2 class="s-title">What I <em>work with</em></h2>
+      <h2 class="s-title split">What I <em>work with</em></h2>
     </div>
     <div class="skills-bento">
-      <div class="skill-tile wide rv">
+      <div class="skill-tile wide tilt rv">
         <div class="tile-label">Programming Languages</div>
         <div class="tile-desc">Core languages used across projects, internships, and coursework with growing proficiency.</div>
         <div class="tile-tags">
@@ -180,7 +197,7 @@
           <span class="ttag">C#</span>
         </div>
       </div>
-      <div class="skill-tile rv">
+      <div class="skill-tile tilt rv">
         <div class="tile-label">Frameworks &amp; Libraries</div>
         <div class="tile-desc">Tools used to build data-driven and web-based applications.</div>
         <div class="tile-tags">
@@ -192,7 +209,7 @@
           <span class="ttag">Threading</span>
         </div>
       </div>
-      <div class="skill-tile rv">
+      <div class="skill-tile tilt rv">
         <div class="tile-label">Tools &amp; Platforms</div>
         <div class="tile-desc">Daily development, version control, and networking environments.</div>
         <div class="tile-tags">
@@ -207,7 +224,7 @@
           <span class="ttag">Unity</span>
         </div>
       </div>
-      <div class="skill-tile rv">
+      <div class="skill-tile tilt rv">
         <div class="tile-label">AI &amp; ML Basics</div>
         <div class="tile-desc">Implementing simple ML algorithms and data-driven Python projects, exploring foundational AI concepts.</div>
       </div>
@@ -220,7 +237,7 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Experience</p>
-      <h2 class="s-title">Where I've <em>contributed</em></h2>
+      <h2 class="s-title split">Where I've <em>contributed</em></h2>
     </div>
     <div class="exp-wrap">
       <div class="exp-node rv">
@@ -248,8 +265,7 @@
           <h3>Python Intern</h3>
           <ul>
             <li>Developed responsive web interfaces using HTML, CSS, and JavaScript with AI-assisted development practices.</li>
-            <li>Applied AI tools to accelerate frontend development, debugging, and code optimization through hands-on assignments and a capstone
-            project.</li>
+            <li>Applied AI tools to accelerate frontend development, debugging, and code optimization through hands-on assignments and a capstone project.</li>
             <li>Built portfolio-ready frontend projects while strengthening modern web development and AI integration skills.</li>
           </ul>
         </div>
@@ -263,7 +279,7 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Education</p>
-      <h2 class="s-title">How I got <em>here</em></h2>
+      <h2 class="s-title split">How I got <em>here</em></h2>
     </div>
     <div class="exp-wrap">
       <div class="exp-node rv">
@@ -307,14 +323,22 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Projects</p>
-      <h2 class="s-title">Things I've <em>built</em></h2>
+      <h2 class="s-title split">Things I've <em>built</em></h2>
     </div>
-    <div class="proj-grid">
-      <div class="proj-card rv">
+
+    <div class="proj-filters rv" id="projFilters">
+      <button class="pf-chip active" data-filter="all">All</button>
+      <button class="pf-chip" data-filter="python">Python</button>
+      <button class="pf-chip" data-filter="web">Web</button>
+      <button class="pf-chip" data-filter="ai">AI</button>
+    </div>
+
+    <div class="proj-grid" id="projGrid">
+      <div class="proj-card tilt rv" data-tags="web">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">01 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">01 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">Real-Time Chat System</div>
         <p class="proj-body">A real-time messaging application demonstrating live communication between users, built with a focus on responsive interaction and clean, structured code.</p>
@@ -322,11 +346,11 @@
           <span class="pchip">C++</span><span class="pchip">Console Based Application</span><span class="pchip">Real-Time</span>
         </div>
       </div>
-      <div class="proj-card rv">
+      <div class="proj-card tilt rv" data-tags="python web">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">02 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">02 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">Smart Home Automation System</div>
         <p class="proj-body">A Python-based smart home simulation implementing structured design and data handling principles. Manages devices, automates tasks, and demonstrates practical use of DSA concepts for efficient, real-world system operation.</p>
@@ -334,11 +358,11 @@
           <span class="pchip">Python</span><span class="pchip">SQL</span><span class="pchip">Automation</span><span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span>
         </div>
       </div>
-      <div class="proj-card rv">
+      <div class="proj-card tilt rv" data-tags="web">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">03 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">03 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">DSA Visualizer</div>
         <p class="proj-body">An interactive tool for visualizing data structures and algorithms in action, built to make abstract computational concepts easier to understand and explore.</p>
@@ -346,11 +370,11 @@
           <span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">BootStrap</span><span class="pchip">JavaScript</span>
         </div>
       </div>
-      <div class="proj-card rv">
+      <div class="proj-card tilt rv" data-tags="web">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">04 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">04 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">My-Portfolio</div>
         <p class="proj-body">This personal portfolio website — a fully custom, animated single-page site showcasing my education, skills, experience, and projects.</p>
@@ -358,11 +382,11 @@
           <span class="pchip">HTML</span><span class="pchip">CSS</span><span class="pchip">JavaScript</span>
         </div>
       </div>
-      <div class="proj-card rv">
+      <div class="proj-card tilt rv" data-tags="python ai">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">05 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">05 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">AI-Resume Analyzer</div>
         <p class="proj-body">A Python tool that parses and evaluates resumes, applying data handling and text-processing techniques to surface structured insights from unstructured documents.</p>
@@ -370,11 +394,11 @@
           <span class="pchip">Python</span><span class="pchip">Flask</span><span class="pchip">Text Processing</span><span class="pchip">HTML</span><span class="pchip">SQL</span>
         </div>
       </div>
-      <div class="proj-card rv">
+      <div class="proj-card tilt rv" data-tags="python web">
         <div class="proj-card-shine"></div>
         <div class="proj-top">
-          <div class="proj-idx">06 - Project</div>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link">GitHub →</a>
+          <div class="proj-idx">06 — Project</div>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="proj-link" data-cursor-text="View">GitHub →</a>
         </div>
         <div class="proj-title">Reflecto - Open-Source Project</div>
         <p class="proj-body">A personal productivity web app covering mood tracking, journaling, study notes, and task management, built in both PHP and Python/Flask versions with PDF export and theme switching.</p>
@@ -383,6 +407,7 @@
         </div>
       </div>
     </div>
+    <p class="proj-empty" id="projEmpty">No projects match this filter yet — check back soon.</p>
   </div>
 </section>
 
@@ -391,7 +416,7 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Achievements &amp; Languages</p>
-      <h2 class="s-title">Certifications &amp; <em>languages</em></h2>
+      <h2 class="s-title split">Certifications &amp; <em>languages</em></h2>
     </div>
     <div class="extras-layout">
       <div class="cert-list rv-l">
@@ -448,7 +473,7 @@
   <div class="container">
     <div class="s-head rv">
       <p class="s-label">Get In Touch</p>
-      <h2 class="s-title">Let's <em>connect</em></h2>
+      <h2 class="s-title split">Let's <em>connect</em></h2>
     </div>
     <div class="contact-layout">
       <div class="rv-l">
@@ -458,22 +483,21 @@
           <span class="contact-brand-role">IT &amp; AI Researcher</span>
         </div>
         <div class="clinks">
-          <a href="mailto:alishbaw026@gmail.com" class="clink">
-            <div class="clink-ico">✉️</div>
+          <a href="mailto:alishbaw026@gmail.com" class="clink" data-cursor-text="Email">
             <div class="clink-info">
               <div class="clink-lbl">Email</div>
               <div class="clink-val">alishbaw026@gmail.com</div>
             </div>
             <span class="clink-arr">→</span>
           </a>
-          <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" class="clink">
+          <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" class="clink" data-cursor-text="Open">
             <div class="clink-info">
               <div class="clink-lbl">LinkedIn</div>
               <div class="clink-val">linkedin.com/in/alishbahwaheed</div>
             </div>
             <span class="clink-arr">→</span>
           </a>
-          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="clink">
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" class="clink" data-cursor-text="Open">
             <div class="clink-info">
               <div class="clink-lbl">GitHub</div>
               <div class="clink-val">github.com/TheAlishbahWaheed</div>
@@ -495,7 +519,7 @@
         </div>
         <div class="fg"><label>Subject</label><input type="text" name="subject" id="cfSubject" placeholder="What's this about?" required/></div>
         <div class="fg"><label>Message</label><textarea rows="5" name="message" id="cfMessage" placeholder="Tell me more..." required></textarea></div>
-        <button class="cf-btn" type="submit" id="cfBtn">Send Message →</button>
+        <button class="cf-btn magnetic" type="submit" id="cfBtn" data-cursor-text="Send">Send Message →</button>
         <div class="cf-status" id="cfStatus"></div>
       </form>
     </div>
@@ -505,8 +529,11 @@
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-brand">Alishbah<span>.</span></div>
-  <div class="footer-copy">Made with love by Alishbah Waheed </div>
+  <div class="footer-copy">Made with love by Alishbah Waheed</div>
 </footer>
+
+<!-- BACK TO TOP -->
+<button id="toTop" aria-label="Back to top">↑</button>
 
 <script src="script.js"></script>
 </body>

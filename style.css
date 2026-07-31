@@ -1,29 +1,23 @@
-/* ============================================================
-   ALISHBAH WAHEED — PORTFOLIO STYLES
-   Soft pastel, glassmorphic design system with light & dark modes
-   ============================================================ */
-
-/* ---------- 1. DESIGN TOKENS ---------- */
 :root{
-  /* Pastel palette — light mode */
-  --lavender:      #C9BFEA;
-  --powder-blue:   #B7D8E8;
-  --sage:          #B9CFB2;
-  --blush:         #F3CDD6;
-  --peach:         #F6D9BC;
-  --cream:         #FBF7F1;
+  /* Professional palette — light mode */
+  --lavender:      #E3DDF4;
+  --powder-blue:   #D6E4F0;
+  --sage:          #DCE1E8;
+  --blush:         #F3DEE6;
+  --peach:         #EAEAF0;
+  --cream:         #FAFAFC;
   --soft-white:    #FFFFFF;
 
   --bg:            var(--cream);
-  --surface:       rgba(255,255,255,0.6);
+  --surface:       rgba(255,255,255,0.7);
   --surface-solid: #FFFFFF;
   --surface-strong:#FFFFFF;
-  --border:        rgba(54,47,69,0.09);
-  --border-strong: rgba(54,47,69,0.16);
+  --border:        rgba(40,44,55,0.08);
+  --border-strong: rgba(40,44,55,0.14);
 
-  --ink:           #34293F;
-  --ink-soft:      #675E77;
-  --ink-faint:     #948AA3;
+  --ink:           #2B2E38;
+  --ink-soft:      #6B6F7B;
+  --ink-faint:     #9A9EA9;
 
   --accent-1: var(--lavender);
   --accent-2: var(--powder-blue);
@@ -31,14 +25,14 @@
   --accent-4: var(--peach);
   --accent-5: var(--sage);
 
-  --grad-hero: linear-gradient(135deg, var(--lavender) 0%, var(--powder-blue) 45%, var(--blush) 100%);
-  --grad-text: linear-gradient(120deg, #8B7CC9 0%, #6FA3C0 50%, #D68CA0 100%);
-  --grad-btn:  linear-gradient(135deg, #B8A8E8 0%, #A6CCE0 100%);
+  --grad-hero: linear-gradient(135deg, var(--powder-blue) 0%, var(--lavender) 50%, var(--blush) 100%);
+  --grad-text: linear-gradient(120deg, #000000 0%, #3e3464 50%, #000000 100%);
+  --grad-btn:  linear-gradient(135deg, #A9C3DC 0%, #B7ADD9 100%);
 
-  --shadow-sm: 0 2px 12px rgba(60,45,90,0.06);
-  --shadow-md: 0 10px 34px rgba(60,45,90,0.10);
-  --shadow-lg: 0 22px 60px rgba(60,45,90,0.14);
-  --shadow-glow: 0 0 0 1px rgba(255,255,255,0.4) inset, 0 12px 40px rgba(140,120,200,0.18);
+  --shadow-sm: 0 2px 12px rgba(40,44,55,0.05);
+  --shadow-md: 0 10px 34px rgba(40,44,55,0.08);
+  --shadow-lg: 0 22px 60px rgba(40,44,55,0.11);
+  --shadow-glow: 0 0 0 1px rgba(255,255,255,0.5) inset, 0 12px 40px rgba(140,150,180,0.16);
 
   --radius-sm: 10px;
   --radius-md: 18px;
@@ -59,24 +53,24 @@
 }
 
 html[data-theme="dark"]{
-  --bg:            #17131F;
-  --surface:       rgba(38,32,54,0.55);
-  --surface-solid: #221C30;
-  --surface-strong:#2A2338;
+  --bg:            #05070A;
+  --surface:       rgba(12, 15, 20, 0.55);
+  --surface-solid: #10151E;
+  --surface-strong:#0B0F16;
   --border:        rgba(255,255,255,0.08);
   --border-strong: rgba(255,255,255,0.14);
 
-  --ink:           #F1ECFA;
-  --ink-soft:      #C9C0DC;
-  --ink-faint:     #8E85A5;
+  --ink:           #8fa3be;
+  --ink-soft:      #43566e;
+  --ink-faint:     #4a556b;
 
-  --lavender:      #B7A3EC;
-  --powder-blue:   #92C4E5;
-  --sage:          #A0CE9A;
-  --blush:         #EFA0BC;
-  --peach:         #F0BE8C;
-  --cream:         #17131F;
-  --soft-white:    #221C30;
+  --lavender:      #545e6e;
+  --powder-blue:   #09131c;
+  --sage:          #0f1620;
+  --blush:         #121a25;
+  --peach:         #1f2f40;
+  --cream:         #05070A;
+  --soft-white:    #10151E;
 
   --accent-1: var(--lavender);
   --accent-2: var(--powder-blue);
@@ -84,16 +78,17 @@ html[data-theme="dark"]{
   --accent-4: var(--peach);
   --accent-5: var(--sage);
 
-  --grad-hero: linear-gradient(135deg, #4A3A78 0%, #2E5270 45%, #6E3A50 100%);
-  --grad-text: linear-gradient(120deg, #C9BBF5 0%, #9BD3EE 50%, #F0AFC4 100%);
-  --grad-btn:  linear-gradient(135deg, #9B84DE 0%, #7BB6D9 100%);
+  --grad-hero: linear-gradient(135deg, #0D1B2A 0%, #16233A 45%, #0A121C 100%);
+  --grad-text: linear-gradient(120deg, #ccd4df 0%, #B8C6D9 50%, #F5F7FA 100%);
+  --grad-btn:  linear-gradient(135deg, #2f3949 0%, #445f7d 100%);
 
-  --shadow-sm: 0 2px 14px rgba(0,0,0,0.25);
-  --shadow-md: 0 12px 36px rgba(0,0,0,0.32);
-  --shadow-lg: 0 24px 64px rgba(0,0,0,0.4);
-  --shadow-glow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 12px 40px rgba(150,120,220,0.22);
+  --shadow-sm: 0 2px 14px rgba(0,0,0,0.3);
+  --shadow-md: 0 12px 36px rgba(0,0,0,0.38);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.46);
+  --shadow-glow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 12px 40px rgba(30,60,100,0.28);
   color-scheme: dark;
 }
+
 
 /* ---------- 2. RESET ---------- */
 *, *::before, *::after{ box-sizing: border-box; margin:0; padding:0; }
@@ -114,7 +109,13 @@ ul{ list-style:none; }
 button, input, textarea{ font-family:inherit; font-size:inherit; color:inherit; border:none; background:none; }
 button{ cursor:pointer; }
 h1,h2,h3,h4{ font-family: var(--font-display); font-weight:500; line-height:1.15; }
-::selection{ background: var(--accent-1); color:#fff; }
+::selection{ background: var(--accent-1); color: var(--ink); }
+
+@property --p{
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
 
 @media (prefers-reduced-motion: reduce){
   *, *::before, *::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
@@ -238,7 +239,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
 
 .nav-scrim{
-  position:fixed; inset:0; z-index:998; background:rgba(20,15,30,0.35);
+  position:fixed; inset:0; z-index:998; background:rgba(8,10,14,0.55);
   backdrop-filter: blur(2px); opacity:0; visibility:hidden; transition: opacity var(--dur-fast) var(--ease), visibility var(--dur-fast) var(--ease);
 }
 .nav-scrim.show{ opacity:1; visibility:visible; }
@@ -351,7 +352,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 /* ---------- 9. SECTIONS COMMON ---------- */
 .section{ padding: 7.5rem 0; position:relative; }
 .section-alt{ background: var(--surface-solid); }
-html[data-theme="dark"] .section-alt{ background: #1C1728; }
+html[data-theme="dark"] .section-alt{ background: #0B0F16; }
 .section-head{ text-align:center; max-width:640px; margin:0 auto 3.6rem; }
 .eyebrow{
   font-family: var(--font-mono); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
@@ -408,18 +409,30 @@ html[data-theme="dark"] .section-alt{ background: #1C1728; }
 }
 .chip-lg{ padding:.55rem 1.05rem; font-size:.84rem; }
 
-.skill-orbit-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:1.4rem; }
+.skill-orbit-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:1.4rem 1rem; }
 .orbit-chip{ display:flex; flex-direction:column; align-items:center; gap:.6rem; text-align:center; }
 .orbit-ring{
-  --p: 70;
-  width:64px; height:64px; border-radius:50%; position:relative;
-  background: conic-gradient(var(--accent-1) calc(var(--p)*1%), var(--border-strong) 0);
+  --p: 0;
+  --size: 64px;
+  --thickness: 6px;
+  width: var(--size); height: var(--size);
+  border-radius: 50%; position: relative;
   display:flex; align-items:center; justify-content:center;
+  background: conic-gradient(var(--accent-1) calc(var(--p) * 1%), var(--border-strong) 0);
+  transition: --p 1.4s var(--ease);
 }
 .orbit-ring::before{
-  content:''; position:absolute; inset:5px; border-radius:50%; background: var(--surface-solid);
+  content:''; position:absolute; inset: var(--thickness);
+  border-radius:50%; background: var(--surface-solid);
 }
-.orbit-label{ font-size:.78rem; font-weight:600; color: var(--ink-soft); }
+
+.orbit-percent{
+  position: relative; z-index:1;
+  font-family: var(--font-mono);
+  font-size: .78rem; font-weight:700; color: var(--ink); line-height:1;
+}
+
+.orbit-label{ display:block; margin-top:8px; font-size:.78rem; font-weight:600; color: var(--ink-soft); }
 
 .focus-list{ display:flex; flex-direction:column; gap:.7rem; }
 .focus-item{ font-size:.92rem; color: var(--ink-soft); font-weight:500; display:flex; gap:.6rem; align-items:flex-start; }
@@ -515,7 +528,7 @@ html[data-theme="dark"] .section-alt{ background: #1C1728; }
 .edu-card h3{ font-size:1.15rem; margin-bottom:.4rem; display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
 .edu-tag{
   font-family: var(--font-mono); font-size:.65rem; font-weight:600; text-transform:uppercase;
-  background: var(--accent-4); color:#4A3520; padding:.2rem .55rem; border-radius: var(--radius-pill);
+  background: var(--accent-4); color:#1B2230; padding:.2rem .55rem; border-radius: var(--radius-pill);
 }
 .edu-org{ font-size:.88rem; color: var(--ink-soft); font-weight:500; margin-bottom:.7rem; }
 .edu-courses{ font-size:.88rem; color: var(--ink-soft); }
@@ -605,7 +618,7 @@ html[data-theme="dark"] .section-alt{ background: #1C1728; }
 
 /* ---------- 19. FOOTER ---------- */
 .site-footer{ background: var(--surface-solid); border-top:1px solid var(--border); padding-top:3.5rem; }
-html[data-theme="dark"] .site-footer{ background:#1C1728; }
+html[data-theme="dark"] .site-footer{ background:#0B0F16; }
 .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.6rem; padding-bottom:2.5rem; }
 .footer-brand{ font-family: var(--font-display); font-size:1.25rem; font-weight:600; display:flex; flex-direction:column; }
 .footer-tag{ font-family: var(--font-body); font-size:.8rem; font-weight:500; color: var(--ink-faint); margin-top:.2rem; }

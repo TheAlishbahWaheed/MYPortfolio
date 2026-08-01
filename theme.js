@@ -19,7 +19,7 @@
     var toggle = document.getElementById("themeToggle");
     if (toggle) toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#221C30" : "#C9BFEA");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#05070A" : "#FAFAFC");
   }
 
   // Apply immediately to avoid flash of wrong theme

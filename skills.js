@@ -1,4 +1,4 @@
-/* skills.js — animates skill progress bars and orbit rings on scroll into view */
+/* skills.js — animates skill progress bars and orbit rings (with counting percentage) on scroll into view */
 (function () {
   "use strict";
 
@@ -13,11 +13,33 @@
     }
 
     function growRing(ring) {
-      ring.style.transition = "background 1.1s cubic-bezier(.22,1,.36,1)";
+      var target = parseInt(ring.getAttribute("data-p") || "0", 10);
+      var percentEl = ring.querySelector(".orbit-percent");
+      var start = null;
+      var duration = 1300;
+
+      function frame(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        ring.style.setProperty("--p", current);
+        if (percentEl) percentEl.textContent = current + "%";
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+        }
+      }
+      requestAnimationFrame(frame);
     }
 
     if (!("IntersectionObserver" in window)) {
       bars.forEach(fillBar);
+      rings.forEach(function (r) {
+        var target = parseInt(r.getAttribute("data-p") || "0", 10);
+        r.style.setProperty("--p", target);
+        var p = r.querySelector(".orbit-percent");
+        if (p) p.textContent = target + "%";
+      });
       return;
     }
 

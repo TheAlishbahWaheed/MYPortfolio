@@ -16,10 +16,14 @@
     var pointer = { x: null, y: null };
     var rafId = null;
 
-    var PALETTE = ["#C9BFEA", "#B7D8E8", "#F3CDD6", "#F6D9BC", "#B9CFB2"];
-
     function isDark() {
       return document.documentElement.getAttribute("data-theme") === "dark";
+    }
+
+    function currentPalette() {
+      return isDark()
+        ? ["#E8ECF2", "#AFC1D6", "#8FA3BD", "#16233A"]
+        : ["#D6E4F0", "#E3DDF4", "#F3DEE6", "#9A9EA9"];
     }
 
     function resize() {
@@ -38,6 +42,7 @@
     function buildNodes() {
       var count = Math.round((W * H) / 26000);
       count = Math.max(18, Math.min(count, 60));
+      var palette = currentPalette();
       nodes = [];
       for (var i = 0; i < count; i++) {
         nodes.push({
@@ -46,7 +51,7 @@
           vx: (Math.random() - 0.5) * 0.18,
           vy: (Math.random() - 0.5) * 0.18,
           r: Math.random() * 1.6 + 1.2,
-          color: PALETTE[i % PALETTE.length]
+          color: palette[i % palette.length]
         });
       }
     }
@@ -83,7 +88,7 @@
           var ddx = na.x - nb.x, ddy = na.y - nb.y;
           var d = Math.sqrt(ddx * ddx + ddy * ddy);
           if (d < linkDist) {
-            ctx.strokeStyle = "rgba(150,130,190," + (lineAlpha * (1 - d / linkDist)) + ")";
+            ctx.strokeStyle = "rgba(120,140,170," + (lineAlpha * (1 - d / linkDist)) + ")";
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(na.x, na.y);
@@ -109,6 +114,13 @@
 
     resize();
     window.addEventListener("resize", resize);
+
+    var themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", function () {
+        setTimeout(buildNodes, 50);
+      });
+    }
 
     hero.addEventListener("mousemove", function (e) {
       var rect = hero.getBoundingClientRect();

@@ -1,4 +1,4 @@
-# 🌐 My Portfolio
+# My Portfolio
 
 Welcome to my personal portfolio website! This portfolio showcases my skills, projects, education, and achievements as an IT student passionate about Artificial Intelligence, Python, and Web Development.
 

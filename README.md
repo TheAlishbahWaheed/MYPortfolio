@@ -4,7 +4,7 @@ Welcome to my personal portfolio website! This portfolio showcases my skills, pr
 
 ## 👩‍💻 About Me
 
-Hi, I'm **Alishba Waheed**, an IT student with a strong interest in AI, Python, and modern web technologies. I enjoy building practical projects, learning new skills, and creating user-friendly web applications.
+Hi, I'm **Alishbah Waheed**, an IT student with a strong interest in AI, Python, and modern web technologies. I enjoy building practical projects, learning new skills, and creating user-friendly web applications.
 
 ## 🚀 Features
 

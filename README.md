@@ -45,7 +45,7 @@ Add a screenshot of your portfolio here.
 - **Name:** Alishba Waheed
 - **Email:** alishbaw026@gmail.com
 - **GitHub:** https://github.com/TheAlishbahWaheed
-- **LinkedIn:** *(Add your LinkedIn profile link here)*
+- **LinkedIn:** linkedin.com/in/alishbahwaheed
 
 ## 🌟 Future Improvements
 

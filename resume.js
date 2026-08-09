@@ -1,51 +1,44 @@
-/* resume.js — email-gated resume delivery.
-   Any visitor who enters their email gets:
-     1) an instant browser download of resume.pdf,
-     2) (once EmailJS is set up below) a copy emailed to them, AND
-     3) you get a notification email telling you who downloaded it.
+/* resume.js — email-gated resume delivery, using ONE shared EmailJS template
+   for both the visitor's copy and your download notification.
+
+   Every visitor who enters their email gets:
+     1) an instant browser download of resume.pdf, AND
+     2) an email sent to them via EmailJS.
+   You also get a second email (same template, different recipient) telling
+   you who downloaded it and when.
 
    ============================================================
-   EMAILJS SETUP — do this once, it's free at https://www.emailjs.com
+   YOUR EMAILJS TEMPLATE — since one template is doing double duty, make
+   sure it's set up like this in the EmailJS dashboard:
 
-   1. Create an Email Service (Gmail/Outlook/etc.) → copy its "Service ID".
-      The same Service ID is reused for both templates below.
+   - "To Email" field on the template → {{to_email}}   (NOT a fixed address —
+     this is what lets the same template go to a visitor one time and to you
+     the next)
+   - Subject line → {{subject}}
+   - Body → include {{to_name}} and {{message}} somewhere so both the
+     resume email and the notification email read naturally
+   - Attachments tab → resume.pdf uploaded there
 
-   2. Create Template #1 — "Resume to visitor":
-      - Set the template's "To Email" field to {{to_email}}
-      - Add a {{to_name}} variable if you want to greet them by name
-      - Open the template's "Attachments" tab and upload resume.pdf so
-        it's attached automatically on every send
-      - Copy this template's ID → EMAILJS_VISITOR_TEMPLATE_ID
-
-   3. Create Template #2 — "New resume download" (goes to you):
-      - Set the template's "To Email" field to your own address
-        (alishbaw026@gmail.com) — hardcode it in the template, not here
-      - Add a {{visitor_email}} variable in the body so the email tells
-        you who just downloaded your resume
-      - Copy this template's ID → EMAILJS_NOTIFY_TEMPLATE_ID
-
-   4. Go to Account → API Keys → copy your "Public Key".
-   5. Paste all four values into the constants below.
-
-   Until these are filled in, the button still works — it just skips
-   the email steps and downloads resume.pdf directly, so nothing
-   breaks while you finish the EmailJS setup.
+   Heads up: because attachments are set on the template itself (not per
+   send), resume.pdf will also be attached to the notification email you
+   receive — that's harmless, just something to expect.
    ============================================================ */
 (function () {
   "use strict";
 
-  var EMAILJS_SERVICE_ID           = "YOUR_SERVICE_ID";
-  var EMAILJS_VISITOR_TEMPLATE_ID  = "YOUR_VISITOR_TEMPLATE_ID";
-  var EMAILJS_NOTIFY_TEMPLATE_ID   = "YOUR_NOTIFY_TEMPLATE_ID";
-  var EMAILJS_PUBLIC_KEY           = "YOUR_PUBLIC_KEY";
+  var EMAILJS_SERVICE_ID  = "alishbahwaheed";
+  var EMAILJS_TEMPLATE_ID = "template_c2lbgmu";
+  var EMAILJS_PUBLIC_KEY  = "7FtdnI3kUCzqPUfdc";
+
+  var OWNER_EMAIL = "alishbaw026@gmail.com";
+  var OWNER_NAME = "Alishbah";
 
   var RESUME_FILE = "resume.pdf";
   var RESUME_DOWNLOAD_NAME = "Alishbah-Waheed-Resume.pdf";
 
   function isConfigured() {
     return EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-      EMAILJS_VISITOR_TEMPLATE_ID !== "YOUR_VISITOR_TEMPLATE_ID" &&
-      EMAILJS_NOTIFY_TEMPLATE_ID !== "YOUR_NOTIFY_TEMPLATE_ID" &&
+      EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
       EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
   }
 
@@ -163,28 +156,28 @@
       statusEl.className = "form-status";
 
       if (!window.emailjs || !isConfigured()) {
-        // EmailJS isn't set up yet — download still works, see the
-        // setup notes at the top of this file to enable the email step.
         setTimeout(function () { showSuccess(false, email); }, 350);
         return;
       }
 
-      // Fire both emails: resume → visitor, notification → you (the owner),
-      // so you know exactly who downloaded it and when.
-      var sendToVisitor = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_VISITOR_TEMPLATE_ID, {
+      // Same template, sent twice with different recipients/content:
+      // once to the visitor with the resume, once to you as a heads-up.
+      var sendToVisitor = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         to_email: email,
-        to_name: email.split("@")[0]
+        to_name: email.split("@")[0],
+        subject: "Alishbah Waheed — Resume",
+        message: "Thanks for your interest! My resume is attached. Feel free to reach out anytime at " + OWNER_EMAIL + "."
       });
 
-      var notifyOwner = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE_ID, {
-        visitor_email: email,
-        downloaded_at: new Date().toLocaleString()
+      var notifyOwner = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email: OWNER_EMAIL,
+        to_name: OWNER_NAME,
+        subject: "New resume download",
+        message: email + " just downloaded your resume from your portfolio at " + new Date().toLocaleString() + "."
       });
 
       sendToVisitor
         .then(function () {
-          // Fire-and-forget: the owner notification shouldn't block or
-          // fail the visitor's success state if it errors out.
           notifyOwner.catch(function () {});
           showSuccess(true, email);
         })

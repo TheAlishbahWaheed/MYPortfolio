@@ -341,7 +341,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .hero-socials svg{ width:18px; height:18px; }
 
 .scroll-cue{
-  position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
+  position:absolute; bottom:1.6rem; left:50%; transform:translateX(-50%);
   display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
   font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color: var(--ink-faint);
 }
@@ -354,6 +354,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   background: var(--accent-1); animation: cueMove 1.8s var(--ease) infinite;
 }
 @keyframes cueMove{ to{ top:100%; } }
+
+/* On short/zoomed-in windows there isn't enough vertical room between the
+   hero content and the bottom of the viewport — hide the scroll cue there
+   instead of letting it overlap the social icons. */
+@media (max-height: 720px){
+  .scroll-cue{ display:none; }
+}
 
 /* ---------- 9. SECTIONS COMMON ---------- */
 .section{ padding: 7.5rem 0; position:relative; }

@@ -1,37 +1,51 @@
 /* resume.js — email-gated resume delivery.
    Any visitor who enters their email gets:
-     1) an instant browser download of resume.pdf, AND
-     2) (once you finish the 3-step setup below) a copy emailed to them via EmailJS.
+     1) an instant browser download of resume.pdf,
+     2) (once EmailJS is set up below) a copy emailed to them, AND
+     3) you get a notification email telling you who downloaded it.
 
    ============================================================
    EMAILJS SETUP — do this once, it's free at https://www.emailjs.com
 
    1. Create an Email Service (Gmail/Outlook/etc.) → copy its "Service ID".
-   2. Create an Email Template. Give it a variable like {{to_email}}
-      (used as the recipient) and {{to_name}}. Then, in that same
-      template's settings, open "Attachments" and upload resume.pdf so
-      EmailJS attaches it automatically on every send — no need to
-      attach it from JavaScript. Copy the template's "Template ID".
-   3. Go to Account → API Keys → copy your "Public Key".
-   4. Paste all three values into the constants below.
+      The same Service ID is reused for both templates below.
 
-   Until you fill these in, the button still works — it just skips the
-   email step and downloads resume.pdf directly, so nothing breaks
-   while you set EmailJS up.
+   2. Create Template #1 — "Resume to visitor":
+      - Set the template's "To Email" field to {{to_email}}
+      - Add a {{to_name}} variable if you want to greet them by name
+      - Open the template's "Attachments" tab and upload resume.pdf so
+        it's attached automatically on every send
+      - Copy this template's ID → EMAILJS_VISITOR_TEMPLATE_ID
+
+   3. Create Template #2 — "New resume download" (goes to you):
+      - Set the template's "To Email" field to your own address
+        (alishbaw026@gmail.com) — hardcode it in the template, not here
+      - Add a {{visitor_email}} variable in the body so the email tells
+        you who just downloaded your resume
+      - Copy this template's ID → EMAILJS_NOTIFY_TEMPLATE_ID
+
+   4. Go to Account → API Keys → copy your "Public Key".
+   5. Paste all four values into the constants below.
+
+   Until these are filled in, the button still works — it just skips
+   the email steps and downloads resume.pdf directly, so nothing
+   breaks while you finish the EmailJS setup.
    ============================================================ */
 (function () {
   "use strict";
 
-  var EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-  var EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-  var EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+  var EMAILJS_SERVICE_ID           = "YOUR_SERVICE_ID";
+  var EMAILJS_VISITOR_TEMPLATE_ID  = "YOUR_VISITOR_TEMPLATE_ID";
+  var EMAILJS_NOTIFY_TEMPLATE_ID   = "YOUR_NOTIFY_TEMPLATE_ID";
+  var EMAILJS_PUBLIC_KEY           = "YOUR_PUBLIC_KEY";
 
   var RESUME_FILE = "resume.pdf";
   var RESUME_DOWNLOAD_NAME = "Alishbah-Waheed-Resume.pdf";
 
   function isConfigured() {
     return EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-      EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
+      EMAILJS_VISITOR_TEMPLATE_ID !== "YOUR_VISITOR_TEMPLATE_ID" &&
+      EMAILJS_NOTIFY_TEMPLATE_ID !== "YOUR_NOTIFY_TEMPLATE_ID" &&
       EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
   }
 
@@ -155,17 +169,32 @@
         return;
       }
 
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      // Fire both emails: resume → visitor, notification → you (the owner),
+      // so you know exactly who downloaded it and when.
+      var sendToVisitor = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_VISITOR_TEMPLATE_ID, {
         to_email: email,
         to_name: email.split("@")[0]
-      }).then(function () {
-        showSuccess(true, email);
-      }).catch(function () {
-        submitBtn.classList.remove("loading");
-        statusEl.textContent = "Couldn't send the email right now — here's your download instead.";
-        statusEl.className = "form-status error";
-        triggerDownload();
       });
+
+      var notifyOwner = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE_ID, {
+        visitor_email: email,
+        downloaded_at: new Date().toLocaleString()
+      });
+
+      sendToVisitor
+        .then(function () {
+          // Fire-and-forget: the owner notification shouldn't block or
+          // fail the visitor's success state if it errors out.
+          notifyOwner.catch(function () {});
+          showSuccess(true, email);
+        })
+        .catch(function () {
+          notifyOwner.catch(function () {});
+          submitBtn.classList.remove("loading");
+          statusEl.textContent = "Couldn't send the email right now — here's your download instead.";
+          statusEl.className = "form-status error";
+          triggerDownload();
+        });
     });
   });
 })();

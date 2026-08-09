@@ -1,13 +1,40 @@
-/* contact.js — client-side validation + mailto-based submission.
-   This site ships with no backend, so on successful validation we open the
-   visitor's email client pre-filled with their message. Swap `sendViaMailto`
-   for a fetch() call to your own form endpoint if you add one later. */
+/* contact.js — client-side validation + live email sending via EmailJS.
+
+   ============================================================
+   EMAILJS SETUP — reuses the same free EmailJS account as resume.js.
+
+   1. Use the same EMAILJS_SERVICE_ID you set up in resume.js.
+   2. Create Template #3 — "New contact message":
+      - Set the template's "To Email" field to your own address
+        (alishbaw026@gmail.com) — hardcode it in the template
+      - Add variables for {{from_name}}, {{from_email}}, {{subject}},
+        {{message}} so the email shows what the visitor wrote
+      - Copy this template's ID → EMAILJS_CONTACT_TEMPLATE_ID
+   3. Paste your EMAILJS_PUBLIC_KEY (same one as resume.js) below.
+
+   Until these are filled in, the form still works — it falls back to
+   opening the visitor's email client with a pre-filled message, same
+   as before, so nothing breaks while you finish the EmailJS setup.
+   ============================================================ */
 (function () {
   "use strict";
 
+  var EMAILJS_SERVICE_ID          = "YOUR_SERVICE_ID";
+  var EMAILJS_CONTACT_TEMPLATE_ID = "YOUR_CONTACT_TEMPLATE_ID";
+  var EMAILJS_PUBLIC_KEY          = "YOUR_PUBLIC_KEY";
   var DEST_EMAIL = "alishbaw026@gmail.com";
 
+  function isConfigured() {
+    return EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
+      EMAILJS_CONTACT_TEMPLATE_ID !== "YOUR_CONTACT_TEMPLATE_ID" &&
+      EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    if (window.emailjs && isConfigured()) {
+      try { emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); } catch (e) {}
+    }
+
     var form = document.getElementById("contactForm");
     if (!form) return;
 
@@ -82,6 +109,15 @@
       window.location.href = "mailto:" + DEST_EMAIL + "?subject=" + subject + "&body=" + body;
     }
 
+    function sendViaEmailJs() {
+      return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, {
+        from_name: fields.name.value.trim(),
+        from_email: fields.email.value.trim(),
+        subject: fields.subject.value.trim(),
+        message: fields.message.value.trim()
+      });
+    }
+
     // Clear individual errors as the visitor fixes them
     Object.keys(fields).forEach(function (key) {
       fields[key].addEventListener("input", function () {
@@ -105,13 +141,30 @@
       statusEl.textContent = "";
       statusEl.className = "form-status";
 
-      setTimeout(function () {
-        submitBtn.classList.remove("loading");
-        sendViaMailto();
-        statusEl.textContent = "Opening your email client to send this along — thank you!";
-        statusEl.className = "form-status success";
-        form.reset();
-      }, 700);
+      if (window.emailjs && isConfigured()) {
+        sendViaEmailJs()
+          .then(function () {
+            submitBtn.classList.remove("loading");
+            statusEl.textContent = "Message sent — thank you! I'll get back to you soon.";
+            statusEl.className = "form-status success";
+            form.reset();
+          })
+          .catch(function () {
+            submitBtn.classList.remove("loading");
+            statusEl.textContent = "Couldn't send that automatically — opening your email client instead.";
+            statusEl.className = "form-status error";
+            sendViaMailto();
+          });
+      } else {
+        // EmailJS isn't set up yet — fall back to mailto, same as before.
+        setTimeout(function () {
+          submitBtn.classList.remove("loading");
+          sendViaMailto();
+          statusEl.textContent = "Opening your email client to send this along — thank you!";
+          statusEl.className = "form-status success";
+          form.reset();
+        }, 700);
+      }
     });
   });
 })();

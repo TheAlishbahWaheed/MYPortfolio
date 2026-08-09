@@ -340,20 +340,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .hero-socials a:hover{ color:#fff; background: var(--grad-btn); transform: translateY(-3px); border-color:transparent; }
 .hero-socials svg{ width:18px; height:18px; }
 
+.
 .scroll-cue{
   position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
   display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
   font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color: var(--ink-faint);
 }
-.scroll-cue{
-  position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
-  display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
-  font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color: var(--ink-faint);
-}
-.scroll-cue i::after{
-  content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;
-  background: var(--accent-1); animation: cueMove 1.8s var(--ease) infinite;
-}
+
 @keyframes cueMove{ to{ top:100%; } }
 
 /* ---------- 9. SECTIONS COMMON ---------- */

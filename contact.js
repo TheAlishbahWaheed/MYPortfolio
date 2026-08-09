@@ -1,32 +1,20 @@
-/* contact.js — client-side validation + live email sending via EmailJS.
-
-   ============================================================
-   EMAILJS SETUP — reuses the same free EmailJS account as resume.js.
-
-   1. Use the same EMAILJS_SERVICE_ID you set up in resume.js.
-   2. Create Template #3 — "New contact message":
-      - Set the template's "To Email" field to your own address
-        (alishbaw026@gmail.com) — hardcode it in the template
-      - Add variables for {{from_name}}, {{from_email}}, {{subject}},
-        {{message}} so the email shows what the visitor wrote
-      - Copy this template's ID → EMAILJS_CONTACT_TEMPLATE_ID
-   3. Paste your EMAILJS_PUBLIC_KEY (same one as resume.js) below.
-
-   Until these are filled in, the form still works — it falls back to
-   opening the visitor's email client with a pre-filled message, same
-   as before, so nothing breaks while you finish the EmailJS setup.
-   ============================================================ */
+/* contact.js — client-side validation + live email sending via EmailJS,
+   reusing the SAME shared template as resume.js (see the notes there for
+   how the template needs to be set up: "To Email" → {{to_email}},
+   Subject → {{subject}}, body includes {{to_name}} and {{message}}). */
 (function () {
   "use strict";
 
-  var EMAILJS_SERVICE_ID          = "YOUR_SERVICE_ID";
-  var EMAILJS_CONTACT_TEMPLATE_ID = "YOUR_CONTACT_TEMPLATE_ID";
-  var EMAILJS_PUBLIC_KEY          = "YOUR_PUBLIC_KEY";
+  var EMAILJS_SERVICE_ID  = "alishbahwaheed";
+  var EMAILJS_TEMPLATE_ID = "template_c2lbgmu";
+  var EMAILJS_PUBLIC_KEY  = "7FtdnI3kUCzqPUfdc";
+
   var DEST_EMAIL = "alishbaw026@gmail.com";
+  var DEST_NAME = "Alishbah";
 
   function isConfigured() {
     return EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-      EMAILJS_CONTACT_TEMPLATE_ID !== "YOUR_CONTACT_TEMPLATE_ID" &&
+      EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
       EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
   }
 
@@ -110,11 +98,16 @@
     }
 
     function sendViaEmailJs() {
-      return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE_ID, {
-        from_name: fields.name.value.trim(),
-        from_email: fields.email.value.trim(),
-        subject: fields.subject.value.trim(),
-        message: fields.message.value.trim()
+      var name = fields.name.value.trim();
+      var email = fields.email.value.trim();
+      var subject = fields.subject.value.trim();
+      var message = fields.message.value.trim();
+
+      return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email: DEST_EMAIL,
+        to_name: DEST_NAME,
+        subject: "Portfolio contact: " + subject,
+        message: "From: " + name + " <" + email + ">\n\n" + message
       });
     }
 
@@ -156,7 +149,6 @@
             sendViaMailto();
           });
       } else {
-        // EmailJS isn't set up yet — fall back to mailto, same as before.
         setTimeout(function () {
           submitBtn.classList.remove("loading");
           sendViaMailto();

@@ -345,9 +345,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
   font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color: var(--ink-faint);
 }
-.scroll-cue i{
-  width:1px; height:34px; background: linear-gradient(var(--ink-faint), transparent);
-  position:relative; overflow:hidden;
+.scroll-cue{
+  position:absolute; bottom:2.2rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:.5rem; z-index:2;
+  font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color: var(--ink-faint);
 }
 .scroll-cue i::after{
   content:''; position:absolute; top:-100%; left:0; width:100%; height:100%;

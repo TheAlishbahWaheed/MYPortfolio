@@ -47,19 +47,45 @@
     ring && ring.classList.remove('is-active');
   });
 
-  // magnetic pull for CTAs
+  // magnetic pull for CTAs — GSAP quickTo gives a smooth follow and an
+  // elastic snap-back on release; falls back to the original direct-style
+  // version if the GSAP CDN didn't load.
   const magnets = document.querySelectorAll('.magnetic');
+  const hasGSAP = typeof window.gsap !== 'undefined';
+
   magnets.forEach((el) => {
     let bounds;
-    el.addEventListener('mouseenter', () => { bounds = el.getBoundingClientRect(); });
-    el.addEventListener('mousemove', (e) => {
-      if (!bounds) bounds = el.getBoundingClientRect();
-      const relX = e.clientX - bounds.left - bounds.width / 2;
-      const relY = e.clientY - bounds.top - bounds.height / 2;
-      el.style.transform = `translate(${relX * 0.28}px, ${relY * 0.35}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = '';
-    });
+
+    if (hasGSAP) {
+      const setX = gsap.quickTo(el, 'x', { duration: 0.45, ease: 'power3.out' });
+      const setY = gsap.quickTo(el, 'y', { duration: 0.45, ease: 'power3.out' });
+      const label = el.querySelector('svg');
+      const setLabelX = label ? gsap.quickTo(label, 'x', { duration: 0.45, ease: 'power3.out' }) : null;
+
+      el.addEventListener('mouseenter', () => { bounds = el.getBoundingClientRect(); });
+      el.addEventListener('mousemove', (e) => {
+        if (!bounds) bounds = el.getBoundingClientRect();
+        const relX = e.clientX - bounds.left - bounds.width / 2;
+        const relY = e.clientY - bounds.top - bounds.height / 2;
+        setX(relX * 0.32);
+        setY(relY * 0.38);
+        if (setLabelX) setLabelX(relX * 0.12);
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
+        if (label) gsap.to(label, { x: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
+      });
+    } else {
+      el.addEventListener('mouseenter', () => { bounds = el.getBoundingClientRect(); });
+      el.addEventListener('mousemove', (e) => {
+        if (!bounds) bounds = el.getBoundingClientRect();
+        const relX = e.clientX - bounds.left - bounds.width / 2;
+        const relY = e.clientY - bounds.top - bounds.height / 2;
+        el.style.transform = `translate(${relX * 0.28}px, ${relY * 0.35}px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    }
   });
 })();

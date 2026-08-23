@@ -30,6 +30,11 @@
     emailField.classList.remove('has-error');
     emailInput.value = '';
     setTimeout(() => emailInput.focus(), 300);
+
+    if (typeof window.gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const inner = form.querySelectorAll('.resume-icon, h3, p, .field, button');
+      gsap.fromTo(inner, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', stagger: 0.05, delay: 0.12, overwrite: true });
+    }
   }
 
   function closeModal() {
@@ -62,6 +67,13 @@
       success.classList.add('is-visible');
       sendBtn.textContent = 'Send & Download';
       sendBtn.disabled = false;
+
+      if (typeof window.gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.fromTo(success.querySelectorAll('.check, h3, p, button'),
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', stagger: 0.06, overwrite: true });
+        gsap.fromTo(success.querySelector('.check'), { scale: 0.5, rotate: -20 }, { scale: 1, rotate: 0, duration: 0.6, ease: 'back.out(2.2)' });
+      }
     }, 500);
   });
 })();

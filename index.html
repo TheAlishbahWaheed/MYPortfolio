@@ -24,7 +24,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="robots" content="index, follow">
 
 <link rel="stylesheet" href="style.css">
 
@@ -49,8 +51,10 @@
 
 <!-- AMBIENT BACKGROUND -->
 <div class="bg-field" aria-hidden="true"></div>
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-grid" id="bgGrid" aria-hidden="true"></div>
+<div class="bg-glow" id="bgGlow" aria-hidden="true"></div>
+<div class="ambient-blob blob-a" id="blobA" aria-hidden="true"></div>
+<div class="ambient-blob blob-b" id="blobB" aria-hidden="true"></div>
 <div class="bg-noise" aria-hidden="true"></div>
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
@@ -284,6 +288,7 @@
       </div>
 
       <div class="timeline">
+        <div class="tl-progress" aria-hidden="true"><i id="tlProgressFill"></i></div>
         <div class="tl-item" data-reveal>
           <div class="tl-dot"></div>
           <div class="tl-card glass">
@@ -367,6 +372,11 @@
           data-tags="Python,Scikit-learn,Pandas,NumPy"
           data-repo="https://github.com/TheAlishbahWaheed/flyrank-ml-internship"
           data-live="">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">01</span>
             <div class="proj-links">
@@ -388,6 +398,11 @@
           data-tags="Flask,Python,JSON,Open Source"
           data-repo="https://github.com/TheAlishbahWaheed/Reflecto"
           data-live="">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">02</span>
             <div class="proj-links">
@@ -409,6 +424,11 @@
           data-tags="Flask,Python,SQLite,OOP"
           data-repo="https://github.com/TheAlishbahWaheed"
           data-live="">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">03</span>
             <div class="proj-links">
@@ -430,6 +450,11 @@
           data-tags="HTML,CSS,Bootstrap,JavaScript"
           data-repo="https://github.com/TheAlishbahWaheed/First-Front-End-Project-DSA-Visualizer"
           data-live="">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">04</span>
             <div class="proj-links">
@@ -451,6 +476,11 @@
           data-tags="Python,Flask,SQL,Text Processing"
           data-repo="https://github.com/TheAlishbahWaheed/Resume-Analyzer"
           data-live="">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">05</span>
             <div class="proj-links">
@@ -472,6 +502,11 @@
           data-tags="HTML5,CSS3,JavaScript,Vercel"
           data-repo="https://github.com/TheAlishbahWaheed/MyPortfolio"
           data-live="https://my-portfolio-omega-ruby-61.vercel.app/">
+          <div class="proj-preview" aria-hidden="true">
+            <span class="proj-preview-grid"></span>
+            <span class="proj-preview-scan"></span>
+            <span class="proj-preview-glyph">&lt;/&gt;</span>
+          </div>
           <div class="proj-top">
             <span class="proj-index">06</span>
             <div class="proj-links">
@@ -809,6 +844,14 @@
 
 <a id="resumeDownloadLink" href="resume.pdf" download="Alishbah-Waheed-Resume.pdf" class="sr-only" aria-hidden="true">Download resume</a>
 
+<!-- GSAP powers scroll-parallax, split-text reveals and eased interactions.
+     Loaded from CDN; every feature below checks `typeof gsap` first, so the
+     site still works fully (just with the original lighter motion) if a
+     network/ad-blocker ever prevents this from loading. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+
 <script src="loader.js"></script>
 <script src="main.js"></script>
 <script src="cursor.js"></script>
@@ -821,5 +864,6 @@
 <script src="projects.js"></script>
 <script src="resume.js"></script>
 <script src="contact.js"></script>
+<script src="motion.js"></script>
 </body>
 </html>

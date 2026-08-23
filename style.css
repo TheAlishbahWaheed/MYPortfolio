@@ -128,6 +128,18 @@ body.has-cursor, body.has-cursor a, body.has-cursor button, body.has-cursor inpu
   will-change: transform;
 }
 
+/* large, slow-drifting ambient depth blobs — separate from the tight
+   cursor-local glow above; these give the whole page a sense of depth
+   as you scroll and move the mouse, without ever competing for attention */
+.ambient-blob{
+  position:fixed; top:50%; left:50%; z-index:-2; pointer-events:none;
+  width:52vmax; height:52vmax; border-radius:50%; filter: blur(90px);
+  opacity:.5; will-change: transform, left, top;
+}
+.blob-a{ background: radial-gradient(circle, rgba(139,107,255,.16) 0%, transparent 68%); }
+.blob-b{ background: radial-gradient(circle, rgba(43,226,226,.11) 0%, transparent 68%); }
+@media (max-width:768px){ .ambient-blob{ display:none; } }
+
 /* ---------- 4. CUSTOM CURSOR ---------- */
 .cursor{
   position:fixed; top:0; left:0; width:9px; height:9px; border-radius:50%;
@@ -152,10 +164,14 @@ body.has-cursor .cursor,body.has-cursor .cursor-ring{ display:block; }
 #loader{
   position:fixed; inset:0; z-index:10000; background: var(--bg);
   display:flex; align-items:center; justify-content:center;
-  transition: opacity .6s var(--ease), visibility .6s var(--ease);
+  transition: opacity .7s var(--ease), visibility .7s var(--ease), filter .7s var(--ease);
 }
-#loader.is-hidden{ opacity:0; visibility:hidden; }
-.loader-inner{ text-align:center; }
+#loader.is-hidden{ opacity:0; visibility:hidden; filter: blur(6px); }
+.loader-inner{
+  text-align:center;
+  transition: transform .7s var(--ease), opacity .7s var(--ease);
+}
+#loader.is-hidden .loader-inner{ transform: scale(1.06); opacity:0; }
 .loader-mark{
   font-family: var(--font-display); font-size: 2.4rem; font-weight:700; letter-spacing:.08em;
   display:flex; gap:.15em; justify-content:center; margin-bottom: 22px;
@@ -275,6 +291,11 @@ body.has-cursor .cursor,body.has-cursor .cursor-ring{ display:block; }
 [data-reveal].is-visible{ opacity:1; transform:none; }
 [data-reveal-group] > *{ transition-delay: calc(var(--stagger-i,0) * 90ms); }
 
+/* split-word heading reveal targets (built at runtime by motion.js) —
+   each word sits in an overflow-hidden mask so it can slide up into view */
+.word-mask{ display:inline-block; overflow:hidden; vertical-align:top; }
+.word-inn{ display:inline-block; will-change: transform, opacity; }
+
 /* ---------- 9. HERO ---------- */
 .hero{
   min-height: 100svh; display:flex; align-items:center; position:relative; padding-top: var(--nav-h);
@@ -370,8 +391,16 @@ body.has-cursor .cursor,body.has-cursor .cursor-ring{ display:block; }
 .timeline{ position:relative; max-width:780px; margin:0 auto; }
 .timeline::before{
   content:''; position:absolute; left:19px; top:8px; bottom:8px; width:1px;
-  background: linear-gradient(var(--violet), var(--cyan), transparent);
-  opacity:.35;
+  background: var(--border-strong);
+  opacity:.5;
+}
+/* scroll-scrubbed accent line — draws in as you move through the
+   timeline, tracing over the dim base track above */
+.tl-progress{ position:absolute; left:19px; top:8px; bottom:8px; width:1px; pointer-events:none; }
+.tl-progress i{
+  display:block; width:100%; height:100%; transform: scaleY(0); transform-origin:top center;
+  background: linear-gradient(var(--violet), var(--cyan));
+  box-shadow: 0 0 10px rgba(43,226,226,.5);
 }
 .tl-item{ position:relative; padding-left:64px; margin-bottom:42px; }
 .tl-item:last-child{ margin-bottom:0; }
@@ -405,6 +434,42 @@ body.has-cursor .cursor,body.has-cursor .cursor-ring{ display:block; }
   position:relative; padding:26px; overflow:hidden; transition: transform var(--dur-med) var(--ease), border-color var(--dur-fast);
   transform-style: preserve-3d; will-change: transform;
 }
+
+/* animated preview strip — a lightweight, code-forward motif (not a
+   fabricated screenshot) that gives each card presence at a glance and
+   comes alive on hover */
+.proj-preview{
+  position:relative; height:104px; margin:-26px -26px 22px; overflow:hidden;
+  border-bottom:1px solid var(--border);
+  background:
+    radial-gradient(120% 140% at 15% -10%, rgba(139,107,255,.22), transparent 55%),
+    radial-gradient(120% 140% at 85% 110%, rgba(43,226,226,.16), transparent 55%),
+    linear-gradient(160deg, rgba(255,255,255,.03), rgba(255,255,255,0));
+}
+.proj-preview-grid{
+  position:absolute; inset:-20% -20%; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 40%, #000 0%, transparent 78%);
+  animation: projGridDrift 14s linear infinite;
+}
+@keyframes projGridDrift{ from{ background-position:0 0, 0 0; } to{ background-position:52px 26px, 52px 26px; } }
+.proj-preview-scan{
+  position:absolute; top:0; left:-30%; width:30%; height:100%; pointer-events:none;
+  background: linear-gradient(90deg, transparent, rgba(139,107,255,.16) 45%, rgba(43,226,226,.22) 50%, rgba(43,226,226,.16) 55%, transparent);
+  filter: blur(1px);
+  animation: projScan 5.5s ease-in-out infinite;
+}
+@keyframes projScan{ 0%{ left:-30%; } 55%,100%{ left:130%; } }
+.proj-preview-glyph{
+  position:absolute; right:16px; bottom:12px; font-family: var(--font-mono); font-size:1.5rem; font-weight:500;
+  color: rgba(237,239,247,.14); letter-spacing:-.02em; transition: color var(--dur-med), transform var(--dur-med) var(--ease);
+}
+.proj-card:hover .proj-preview-glyph{ color: rgba(43,226,226,.5); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce){ .proj-preview-grid, .proj-preview-scan{ animation:none; } }
 .proj-card.is-hidden{ display:none; }
 .proj-card:hover{ border-color: var(--border-strong); }
 .proj-card::before{

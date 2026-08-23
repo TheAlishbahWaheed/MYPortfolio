@@ -56,6 +56,12 @@
     burger && burger.classList.add('is-open');
     burger && burger.setAttribute('aria-expanded', 'true');
     scrim && scrim.classList.add('is-open');
+
+    if (typeof window.gsap !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && navLinks) {
+      gsap.fromTo(navLinks.querySelectorAll('a'),
+        { opacity: 0, x: 18 },
+        { opacity: 1, x: 0, duration: 0.4, ease: 'power3.out', stagger: 0.045, delay: 0.08, overwrite: true });
+    }
   }
   burger && burger.addEventListener('click', () => {
     navLinks && navLinks.classList.contains('is-open') ? closeMenu() : openMenu();

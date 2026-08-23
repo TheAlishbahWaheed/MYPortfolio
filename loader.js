@@ -23,6 +23,10 @@
     setTimeout(() => {
       loader.classList.add('is-hidden');
       document.body.classList.add('is-loaded');
+      // Let other modules (e.g. the hero's line-by-line text reveal) know
+      // the loader has cleared, so they can start their entrance on cue
+      // instead of racing it behind the loader.
+      window.dispatchEvent(new CustomEvent('portfolio:loaded'));
       loader.addEventListener('transitionend', () => loader.remove(), { once: true });
     }, 220);
   }

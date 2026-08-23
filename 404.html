@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page not found · Alishbah Waheed</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#06070B">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<style>
+  .nf-wrap{ min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:32px; position:relative; z-index:1; }
+  .nf-code{
+    font-family: var(--font-display); font-weight:700; font-size: clamp(5rem, 18vw, 11rem); line-height:1;
+    background: var(--grad-text); -webkit-background-clip:text; background-clip:text; color:transparent;
+    letter-spacing:-.02em; position:relative; display:inline-block;
+  }
+  .nf-code::before, .nf-code::after{
+    content:'404'; position:absolute; inset:0; -webkit-background-clip:text; background-clip:text; color:transparent;
+    background: var(--grad-text); opacity:.55;
+  }
+  .nf-code::before{ transform: translate(3px,0); background: linear-gradient(120deg, var(--cyan), var(--violet)); animation: nfGlitch 4.5s infinite steps(1); }
+  .nf-code::after{ transform: translate(-3px,0); background: linear-gradient(120deg, var(--violet), var(--rose)); animation: nfGlitch 4.5s infinite steps(1) reverse; }
+  @keyframes nfGlitch{
+    0%, 92%, 100%{ opacity:0; transform:translate(0,0); }
+    93%{ opacity:.5; transform:translate(3px,-1px); }
+    95%{ opacity:.5; transform:translate(-3px,1px); }
+    97%{ opacity:.35; transform:translate(2px,0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .nf-code::before, .nf-code::after{ animation:none; opacity:0; } }
+  .nf-mono{ font-family: var(--font-mono); font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color: var(--text-faint); margin-bottom:18px; }
+  .nf-title{ font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.8rem); margin: 10px 0 14px; color: var(--text); }
+  .nf-desc{ color: var(--text-soft); max-width:440px; margin:0 auto 34px; line-height:1.65; }
+  .nf-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<div class="bg-field" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="ambient-blob blob-a" aria-hidden="true"></div>
+<div class="ambient-blob blob-b" aria-hidden="true"></div>
+<div class="bg-noise" aria-hidden="true"></div>
+
+<main class="nf-wrap">
+  <div>
+    <div class="nf-mono">// error.route_not_found</div>
+    <div class="nf-code" aria-hidden="true">404</div>
+    <h1 class="nf-title">This page didn't compile.</h1>
+    <p class="nf-desc">The page you're looking for doesn't exist, moved, or the link's a little off. Let's get you back to somewhere real.</p>
+    <div class="nf-actions">
+      <a href="/" class="btn btn-primary">Back to home
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="/#projects" class="btn btn-ghost">See my projects</a>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

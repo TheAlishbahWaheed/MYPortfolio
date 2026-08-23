@@ -1,9 +1,21 @@
 // ============================================================
 // CONTACT FORM — client-side validation + submit feedback.
-// This is a front-end-only demo: no backend is wired up, so
-// submissions aren't actually delivered anywhere yet.
+// Sends through EmailJS when window.EMAILJS_CONFIG (emailjs-config.js)
+// has been filled in with real IDs; otherwise falls back to the
+// original front-end-only demo confirmation so the form still feels
+// complete before that's set up.
 // ============================================================
 (function () {
+  function emailjsReady() {
+    const cfg = window.EMAILJS_CONFIG;
+    return typeof window.emailjs !== 'undefined' && cfg &&
+      cfg.publicKey && !cfg.publicKey.startsWith('YOUR_') &&
+      cfg.serviceId && !cfg.serviceId.startsWith('YOUR_') &&
+      cfg.contactTemplateId && !cfg.contactTemplateId.startsWith('YOUR_');
+  }
+  if (emailjsReady()) {
+    try { emailjs.init({ publicKey: window.EMAILJS_CONFIG.publicKey }); } catch (e) {}
+  }
   const form = document.getElementById('contactForm');
   if (!form) return;
 
@@ -41,13 +53,38 @@
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
+    const firstName = fields.name.input.value.trim().split(' ')[0];
 
-    setTimeout(() => {
+    function showSuccess(msg) {
       status.className = 'form-status is-visible is-success';
-      status.textContent = `Thanks, ${fields.name.input.value.trim().split(' ')[0]} — your message is drafted. Email alishbaw026@gmail.com directly for the fastest reply.`;
+      status.textContent = msg;
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
       form.reset();
-    }, 700);
+    }
+    function showError(msg) {
+      status.className = 'form-status is-visible is-error';
+      status.textContent = msg;
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+
+    if (emailjsReady()) {
+      emailjs.send(window.EMAILJS_CONFIG.serviceId, window.EMAILJS_CONFIG.contactTemplateId, {
+        from_name: fields.name.input.value.trim(),
+        from_email: fields.email.input.value.trim(),
+        subject: fields.subject.input.value.trim(),
+        message: fields.message.input.value.trim(),
+      }).then(() => {
+        showSuccess(`Thanks, ${firstName} — your message is on its way. I'll get back to you soon.`);
+      }).catch(() => {
+        showError(`Sorry ${firstName}, that didn't send. Please email alishbaw026@gmail.com directly instead.`);
+      });
+    } else {
+      // Demo fallback until EmailJS is configured — see emailjs-config.js
+      setTimeout(() => {
+        showSuccess(`Thanks, ${firstName} — your message is drafted. Email alishbaw026@gmail.com directly for the fastest reply.`);
+      }, 700);
+    }
   });
 })();

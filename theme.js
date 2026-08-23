@@ -16,10 +16,17 @@
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
+    root.style.colorScheme = theme;
     var toggle = document.getElementById("themeToggle");
-    if (toggle) toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    if (toggle) {
+      toggle.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+      toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    }
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#05070A" : "#FAFAFC");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#06070B" : "#FAFAFC");
+    try {
+      window.dispatchEvent(new CustomEvent("themechange", { detail: { theme: theme } }));
+    } catch (e) {}
   }
 
   // Apply immediately to avoid flash of wrong theme

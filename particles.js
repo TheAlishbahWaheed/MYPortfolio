@@ -98,6 +98,11 @@
   const layers = [2, 4, 5, 4, 1]; // input -> hidden -> output node counts
   let layout = [];
   let pulse = 0;
+  let idleNodeColor = document.documentElement.getAttribute('data-theme') === 'light'
+    ? 'rgba(20,22,43,0.4)' : 'rgba(237,239,247,0.55)';
+  window.addEventListener('themechange', (e) => {
+    idleNodeColor = e.detail.theme === 'light' ? 'rgba(20,22,43,0.4)' : 'rgba(237,239,247,0.55)';
+  });
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -161,7 +166,7 @@
         const isActive = li === segIndex || li === segIndex + 1;
         ctx.beginPath();
         ctx.arc(n.x, n.y, isActive ? 5 : 4, 0, Math.PI * 2);
-        ctx.fillStyle = isActive ? '#2BE2E2' : 'rgba(237,239,247,0.55)';
+        ctx.fillStyle = isActive ? '#2BE2E2' : idleNodeColor;
         ctx.fill();
         ctx.beginPath();
         ctx.arc(n.x, n.y, isActive ? 9 : 0, 0, Math.PI * 2);

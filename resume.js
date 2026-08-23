@@ -1,7 +1,9 @@
 // ============================================================
-// RESUME MODAL — collects an email, then triggers the real
-// resume.pdf download and shows a lightweight success state.
-// No data leaves the browser; this is a front-end-only flow.
+// RESUME MODAL — collects an email, triggers the real resume.pdf
+// download immediately, and (when window.EMAILJS_CONFIG has real IDs
+// — see emailjs-config.js) also emails a copy to that address via a
+// template with resume.pdf attached as a static EmailJS attachment.
+// Falls back to a download-only demo flow otherwise.
 // ============================================================
 (function () {
   const openBtn = document.getElementById('resumeOpenBtn');
@@ -19,6 +21,14 @@
 
   function isValidEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  }
+
+  function emailjsReady() {
+    const cfg = window.EMAILJS_CONFIG;
+    return typeof window.emailjs !== 'undefined' && cfg &&
+      cfg.publicKey && !cfg.publicKey.startsWith('YOUR_') &&
+      cfg.serviceId && !cfg.serviceId.startsWith('YOUR_') &&
+      cfg.resumeTemplateId && !cfg.resumeTemplateId.startsWith('YOUR_');
   }
 
   function openModal() {
@@ -61,7 +71,7 @@
     sendBtn.textContent = 'Preparing download…';
     sendBtn.disabled = true;
 
-    setTimeout(() => {
+    function finish() {
       downloadLink && downloadLink.click();
       form.classList.add('is-hidden');
       success.classList.add('is-visible');
@@ -74,6 +84,19 @@
           { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', stagger: 0.06, overwrite: true });
         gsap.fromTo(success.querySelector('.check'), { scale: 0.5, rotate: -20 }, { scale: 1, rotate: 0, duration: 0.6, ease: 'back.out(2.2)' });
       }
-    }, 500);
+    }
+
+    // The local download always fires immediately — it never depends on
+    // email delivery. The EmailJS send (when configured) happens
+    // alongside it, best-effort, so a slow/failed send never blocks the
+    // visitor from getting the file right away.
+    if (emailjsReady()) {
+      emailjs.send(window.EMAILJS_CONFIG.serviceId, window.EMAILJS_CONFIG.resumeTemplateId, {
+        visitor_email: val.trim(),
+      }).catch(() => {});
+      setTimeout(finish, 400);
+    } else {
+      setTimeout(finish, 500);
+    }
   });
 })();

@@ -613,6 +613,38 @@ body.has-cursor .cursor,body.has-cursor .cursor-ring{ display:block; }
 .cert-card span{ font-size:.82rem; color: var(--text-faint); font-family: var(--font-mono); }
 
 .ach-card{ padding:28px; }
+
+/* ---------- OPEN SOURCE — live GitHub repo cards ---------- */
+.repo-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:20px; }
+@media (max-width:900px){ .repo-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width:600px){ .repo-grid{ grid-template-columns: 1fr; } }
+.repo-skeleton{
+  height:172px; border-radius: var(--radius-md);
+  background: linear-gradient(100deg, var(--panel) 40%, var(--panel-hover) 50%, var(--panel) 60%);
+  background-size:220% 100%; animation: repoShimmer 1.5s ease-in-out infinite;
+}
+@keyframes repoShimmer{ from{ background-position:120% 0; } to{ background-position:-20% 0; } }
+@media (prefers-reduced-motion: reduce){ .repo-skeleton{ animation:none; } }
+.repo-card{
+  padding:24px; display:flex; flex-direction:column; gap:10px; opacity:0; transform: translateY(16px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out), border-color var(--dur-fast), box-shadow var(--dur-fast);
+}
+.repo-card.is-visible{ opacity:1; transform: translateY(0); }
+.repo-card:hover{ border-color: var(--border-strong); box-shadow: var(--shadow-glow); transform: translateY(-4px); }
+.repo-card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+.repo-card h4{ font-size:1rem; font-weight:600; font-family: var(--font-mono); word-break: break-word; }
+.repo-card h4 a{ color: var(--text); }
+.repo-card h4 a:hover{ color: var(--cyan); }
+.repo-card .repo-star{ display:flex; align-items:center; gap:4px; font-size:.78rem; color: var(--amber); font-family: var(--font-mono); flex-shrink:0; }
+.repo-card .repo-star svg{ width:13px; height:13px; }
+.repo-card p{ font-size:.86rem; color: var(--text-soft); line-height:1.6; flex:1; }
+.repo-card-meta{ display:flex; align-items:center; gap:12px; font-size:.78rem; color: var(--text-faint); font-family: var(--font-mono); }
+.repo-lang{ display:flex; align-items:center; gap:6px; }
+.repo-lang-dot{ width:9px; height:9px; border-radius:50%; background: var(--violet); flex-shrink:0; }
+.repo-cta{ display:inline-flex; margin-top:28px; }
+.repo-fallback-note{ grid-column:1/-1; font-size:.82rem; color: var(--text-faint); font-family: var(--font-mono); text-align:center; padding:8px; }
+
+/* ---------- PUBLICATIONS ---------- */
 .ach-num{ font-family: var(--font-display); font-size:1.6rem; font-weight:700; color: var(--amber); margin-bottom:12px; }
 .ach-card h4{ font-size:1.02rem; margin-bottom:8px; }
 .ach-card p{ font-size:.88rem; color: var(--text-soft); }

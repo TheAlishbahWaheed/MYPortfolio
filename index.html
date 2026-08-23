@@ -200,7 +200,7 @@
               <div class="stat-label">Internships completed</div>
             </div>
             <div class="stat-cell">
-              <div class="stat-num" data-count="6">0</div>
+              <div class="stat-num" data-count="7">0</div>
               <div class="stat-label">Certifications earned</div>
             </div>
             <div class="stat-cell">
@@ -534,10 +534,32 @@
     </div>
   </section>
 
+  <!-- ═══════════ OPEN SOURCE ═══════════ -->
+  <section id="open-source">
+    <div class="container">
+      <div class="eyebrow">// 05 — open.source()</div>
+      <div class="section-head">
+        <h2>Building in the <em>open</em></h2>
+        <p>Live from GitHub — my public repos, refreshed on every visit.</p>
+      </div>
+
+      <div class="repo-grid" id="repoGrid" aria-live="polite">
+        <div class="repo-skeleton glass" aria-hidden="true"></div>
+        <div class="repo-skeleton glass" aria-hidden="true"></div>
+        <div class="repo-skeleton glass" aria-hidden="true"></div>
+      </div>
+
+      <a class="btn btn-ghost repo-cta" href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener">
+        View full GitHub profile
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </section>
+
   <!-- ═══════════ AI VISUALIZATION ═══════════ -->
   <section id="ai-focus">
     <div class="container">
-      <div class="eyebrow">// 05 — how.i.work</div>
+      <div class="eyebrow">// 06 — how.i.work</div>
       <div class="ai-viz-wrap">
         <div class="ai-viz-panel glass" data-reveal>
           <canvas id="aiCanvas" aria-hidden="true"></canvas>
@@ -560,7 +582,7 @@
   <!-- ═══════════ EDUCATION ═══════════ -->
   <section id="education">
     <div class="container">
-      <div class="eyebrow">// 06 — education.json</div>
+      <div class="eyebrow">// 07 — education.json</div>
       <div class="section-head">
         <h2>Academic <em>journey</em></h2>
       </div>
@@ -608,7 +630,7 @@
   <!-- ═══════════ CERTIFICATIONS ═══════════ -->
   <section id="certifications">
     <div class="container">
-      <div class="eyebrow">// 07 — certifications.verified</div>
+      <div class="eyebrow">// 08 — certifications.verified</div>
       <div class="section-head">
         <h2>Verified <em>learning</em></h2>
       </div>
@@ -644,6 +666,11 @@
           <h4>Anthropic Courses</h4>
           <span>E-Certificates · Anthropic</span>
         </div>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">🌍</div>
+          <h4>Aspire Leadership Program</h4>
+          <span>E-Certificate · Aspire Institute (Harvard University)</span>
+        </div>
       </div>
     </div>
   </section>
@@ -651,7 +678,7 @@
   <!-- ═══════════ ACHIEVEMENTS ═══════════ -->
   <section id="achievements">
     <div class="container">
-      <div class="eyebrow">// 08 — achievements.log</div>
+      <div class="eyebrow">// 09 — achievements.log</div>
       <div class="section-head">
         <h2>Moments I'm <em>proud of</em></h2>
       </div>
@@ -688,8 +715,19 @@
           <p>Completed a holistic personal and professional development program through the University of Management &amp; Technology.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="research-card glass" data-reveal style="margin-top:26px;">
+  <!-- ═══════════ PUBLICATIONS ═══════════ -->
+  <section id="publications">
+    <div class="container">
+      <div class="eyebrow">// 10 — publications.log</div>
+      <div class="section-head">
+        <h2>Research &amp; <em>writing</em></h2>
+        <p>Independent research alongside the code — policy and technical writing on where AI is headed.</p>
+      </div>
+
+      <div class="research-card glass" data-reveal>
         <div class="eyebrow" style="margin-bottom:12px;">// research &amp; publication</div>
         <h3>Artificial Intelligence and Digital Governance: Opportunities, Risks, and Policy</h3>
         <div class="research-meta">Independent Policy Research Article · Aug 2026</div>
@@ -705,7 +743,7 @@
   <!-- ═══════════ CONTACT ═══════════ -->
   <section id="contact">
     <div class="container">
-      <div class="eyebrow">// 09 — contact.send()</div>
+      <div class="eyebrow">// 11 — contact.send()</div>
       <div class="section-head">
         <h2>Let's build <em>something</em></h2>
         <p>Have a project in mind, an internship opportunity, or just want to talk tech &amp; AI? I'd love to hear from you.</p>
@@ -780,7 +818,9 @@
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
+          <a href="#open-source">Open Source</a>
           <a href="#education">Education</a>
+          <a href="#publications">Publications</a>
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
@@ -870,6 +910,7 @@
 <script src="tilt.js"></script>
 <script src="skills.js"></script>
 <script src="projects.js"></script>
+<script src="github.js"></script>
 <script src="resume.js"></script>
 <script src="contact.js"></script>
 <script src="motion.js"></script>

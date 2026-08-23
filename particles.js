@@ -1,143 +1,183 @@
-/* particles.js — soft pastel "constellation" canvas: an ambient nod to neural networks,
-   drawn with the same palette as the rest of the page. Subtle drift + gentle mouse parallax. */
-(function () {
-  "use strict";
+// ============================================================
+// CANVAS VISUALS
+// 1) Hero neural-network field — nodes drift, connect when close,
+//    and gently follow the cursor.
+// 2) AI panel visualization — a small layered network with a
+//    pulse signal travelling from input to output.
+// ============================================================
+(function heroNeuralNetwork() {
+  const canvas = document.getElementById('neuralCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var canvas = document.getElementById("constellation");
-    if (!canvas) return;
+  let w, h, dpr;
+  let nodes = [];
+  let mouse = { x: -9999, y: -9999 };
 
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.offsetWidth;
+    h = canvas.offsetHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.min(70, Math.max(28, Math.floor((w * h) / 22000)));
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.28,
+      vy: (Math.random() - 0.5) * 0.28,
+      r: Math.random() * 1.6 + 0.8
+    }));
+  }
 
-    var ctx = canvas.getContext("2d");
-    var hero = canvas.closest(".hero");
-    var W, H, DPR;
-    var nodes = [];
-    var pointer = { x: null, y: null };
-    var rafId = null;
+  function step() {
+    ctx.clearRect(0, 0, w, h);
+    const maxDist = 140;
 
-    function isDark() {
-      return document.documentElement.getAttribute("data-theme") === "dark";
+    nodes.forEach((n) => {
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < 0 || n.x > w) n.vx *= -1;
+      if (n.y < 0 || n.y > h) n.vy *= -1;
+
+      const dx = mouse.x - n.x, dy = mouse.y - n.y;
+      const d = Math.hypot(dx, dy);
+      if (d < 160) {
+        n.x -= dx * 0.0018;
+        n.y -= dy * 0.0018;
+      }
+    });
+
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        const dist = Math.hypot(a.x - b.x, a.y - b.y);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.35;
+          ctx.strokeStyle = `rgba(139,107,255,${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
     }
 
-    function currentPalette() {
-      return isDark()
-        ? ["#E8ECF2", "#AFC1D6", "#8FA3BD", "#16233A"]
-        : ["#D6E4F0", "#E3DDF4", "#F3DEE6", "#9A9EA9"];
-    }
+    nodes.forEach((n) => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(43,226,226,0.75)';
+      ctx.fill();
+    });
 
-    function resize() {
-      var rect = hero.getBoundingClientRect();
-      DPR = Math.min(window.devicePixelRatio || 1, 2);
-      W = rect.width;
-      H = rect.height;
-      canvas.width = W * DPR;
-      canvas.height = H * DPR;
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      buildNodes();
-    }
+    if (!reduceMotion) requestAnimationFrame(step);
+  }
 
-    function buildNodes() {
-      var count = Math.round((W * H) / 26000);
-      count = Math.max(18, Math.min(count, 60));
-      var palette = currentPalette();
-      nodes = [];
-      for (var i = 0; i < count; i++) {
-        nodes.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.18,
-          vy: (Math.random() - 0.5) * 0.18,
-          r: Math.random() * 1.6 + 1.2,
-          color: palette[i % palette.length]
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  canvas.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  resize();
+  if (reduceMotion) { step(); } else { requestAnimationFrame(step); }
+})();
+
+(function aiPipelinePanel() {
+  const canvas = document.getElementById('aiCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, dpr;
+  const layers = [2, 4, 5, 4, 1]; // input -> hidden -> output node counts
+  let layout = [];
+  let pulse = 0;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = canvas.offsetWidth;
+    h = canvas.offsetHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const padX = w * 0.12, padY = h * 0.14;
+    layout = layers.map((count, li) => {
+      const x = padX + (li / (layers.length - 1)) * (w - padX * 2);
+      return Array.from({ length: count }, (_, ni) => {
+        const y = count === 1 ? h / 2 : padY + (ni / (count - 1)) * (h - padY * 2);
+        return { x, y };
+      });
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+
+    // edges
+    for (let li = 0; li < layout.length - 1; li++) {
+      layout[li].forEach((a) => {
+        layout[li + 1].forEach((b) => {
+          ctx.strokeStyle = 'rgba(139,107,255,0.14)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
         });
-      }
-    }
-
-    function step() {
-      ctx.clearRect(0, 0, W, H);
-      var linkDist = 150;
-      var lineAlpha = isDark() ? 0.14 : 0.10;
-
-      // Update positions
-      for (var i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        n.x += n.vx;
-        n.y += n.vy;
-        if (n.x < 0 || n.x > W) n.vx *= -1;
-        if (n.y < 0 || n.y > H) n.vy *= -1;
-
-        // gentle pointer attraction
-        if (pointer.x !== null) {
-          var dx = pointer.x - n.x;
-          var dy = pointer.y - n.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180 && dist > 0.001) {
-            n.x += dx * 0.0025;
-            n.y += dy * 0.0025;
-          }
-        }
-      }
-
-      // Draw links
-      for (var a = 0; a < nodes.length; a++) {
-        for (var b = a + 1; b < nodes.length; b++) {
-          var na = nodes[a], nb = nodes[b];
-          var ddx = na.x - nb.x, ddy = na.y - nb.y;
-          var d = Math.sqrt(ddx * ddx + ddy * ddy);
-          if (d < linkDist) {
-            ctx.strokeStyle = "rgba(120,140,170," + (lineAlpha * (1 - d / linkDist)) + ")";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(na.x, na.y);
-            ctx.lineTo(nb.x, nb.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw nodes
-      for (var j = 0; j < nodes.length; j++) {
-        var node = nodes[j];
-        ctx.beginPath();
-        ctx.fillStyle = node.color;
-        ctx.globalAlpha = isDark() ? 0.55 : 0.65;
-        ctx.arc(node.x, node.y, node.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      }
-
-      rafId = requestAnimationFrame(step);
-    }
-
-    resize();
-    window.addEventListener("resize", resize);
-
-    var themeToggle = document.getElementById("themeToggle");
-    if (themeToggle) {
-      themeToggle.addEventListener("click", function () {
-        setTimeout(buildNodes, 50);
       });
     }
 
-    hero.addEventListener("mousemove", function (e) {
-      var rect = hero.getBoundingClientRect();
-      pointer.x = e.clientX - rect.left;
-      pointer.y = e.clientY - rect.top;
-    });
-    hero.addEventListener("mouseleave", function () {
-      pointer.x = null;
-      pointer.y = null;
+    // traveling pulse along the whole path
+    const totalSegs = layout.length - 1;
+    const segFloat = pulse * totalSegs;
+    const segIndex = Math.min(Math.floor(segFloat), totalSegs - 1);
+    const segT = segFloat - segIndex;
+    const fromLayer = layout[segIndex];
+    const toLayer = layout[segIndex + 1];
+    if (fromLayer && toLayer) {
+      const a = fromLayer[Math.floor(fromLayer.length / 2)];
+      const b = toLayer[Math.floor(toLayer.length / 2)];
+      const px = a.x + (b.x - a.x) * segT;
+      const py = a.y + (b.y - a.y) * segT;
+      const grad = ctx.createRadialGradient(px, py, 0, px, py, 16);
+      grad.addColorStop(0, 'rgba(43,226,226,0.9)');
+      grad.addColorStop(1, 'rgba(43,226,226,0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(px, py, 16, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // nodes
+    layout.forEach((layer, li) => {
+      layer.forEach((n) => {
+        const isActive = li === segIndex || li === segIndex + 1;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, isActive ? 5 : 4, 0, Math.PI * 2);
+        ctx.fillStyle = isActive ? '#2BE2E2' : 'rgba(237,239,247,0.55)';
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, isActive ? 9 : 0, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(43,226,226,0.35)';
+        ctx.lineWidth = 1;
+        if (isActive) ctx.stroke();
+      });
     });
 
-    if (reduceMotion) {
-      // Render a single static frame instead of a continuous animation loop
-      step();
-      cancelAnimationFrame(rafId);
-    } else {
-      step();
-    }
-  });
+    pulse += 0.0055;
+    if (pulse > 1) pulse = 0;
+
+    if (!reduceMotion) requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  if (reduceMotion) { pulse = 0.5; draw(); } else { requestAnimationFrame(draw); }
 })();

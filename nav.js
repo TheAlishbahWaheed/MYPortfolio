@@ -1,83 +1,68 @@
-/* nav.js — navbar scroll state, mobile menu, scrollspy, back-to-top, scroll progress */
+// ============================================================
+// NAV — blur-on-scroll, active-section sliding pill, mobile menu
+// ============================================================
 (function () {
-  "use strict";
+  const nav = document.getElementById('siteNav');
+  const navLinks = document.getElementById('navLinks');
+  const navPill = document.getElementById('navPill');
+  const burger = document.getElementById('navBurger');
+  const scrim = document.getElementById('navScrim');
+  const links = Array.from(document.querySelectorAll('[data-nav]'));
+  const sections = links
+    .map((a) => document.getElementById(a.getAttribute('data-nav')))
+    .filter(Boolean);
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var nav = document.getElementById("siteNav");
-    var burger = document.getElementById("navBurger");
-    var navLinks = document.getElementById("navLinks");
-    var scrim = document.getElementById("navScrim");
-    var toTop = document.getElementById("toTop");
-    var scrollFill = document.getElementById("scrollFill");
-    var yearEl = document.getElementById("year");
+  function onScroll() {
+    if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  function movePill(link) {
+    if (!navPill || !link || window.innerWidth <= 900) return;
+    navPill.style.width = link.offsetWidth + 'px';
+    navPill.style.transform = `translateX(${link.offsetLeft - 6}px)`;
+    navPill.style.opacity = '1';
+  }
 
-    // Mobile menu toggle
-    function closeMenu() {
-      burger.classList.remove("open");
-      navLinks.classList.remove("open");
-      scrim.classList.remove("show");
-      burger.setAttribute("aria-expanded", "false");
-    }
-    function openMenu() {
-      burger.classList.add("open");
-      navLinks.classList.add("open");
-      scrim.classList.add("show");
-      burger.setAttribute("aria-expanded", "true");
-    }
-    if (burger) {
-      burger.addEventListener("click", function () {
-        var isOpen = navLinks.classList.contains("open");
-        isOpen ? closeMenu() : openMenu();
+  let activeLink = null;
+  function setActive(id) {
+    links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-nav') === id));
+    const link = links.find((a) => a.getAttribute('data-nav') === id);
+    if (link) { activeLink = link; movePill(link); }
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
       });
-    }
-    if (scrim) scrim.addEventListener("click", closeMenu);
-    document.querySelectorAll('.nav-links a[data-nav]').forEach(function (a) {
-      a.addEventListener("click", closeMenu);
-    });
+    },
+    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+  );
+  sections.forEach((s) => observer.observe(s));
 
-    // Scroll-driven UI: navbar bg, progress bar, back-to-top, scrollspy
-    var sections = document.querySelectorAll("main section[id]");
-    var navAnchors = document.querySelectorAll('.nav-links a[data-nav]');
+  window.addEventListener('resize', () => activeLink && movePill(activeLink));
 
-    function onScroll() {
-      var y = window.scrollY || window.pageYOffset;
-
-      // Navbar background
-      if (nav) nav.classList.toggle("scrolled", y > 40);
-
-      // Back to top button
-      if (toTop) toTop.classList.toggle("show", y > 600);
-
-      // Scroll progress bar
-      if (scrollFill) {
-        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = docHeight > 0 ? (y / docHeight) * 100 : 0;
-        scrollFill.style.width = pct + "%";
-      }
-
-      // Scrollspy
-      var current = "";
-      sections.forEach(function (sec) {
-        var rect = sec.getBoundingClientRect();
-        if (rect.top <= 140 && rect.bottom >= 140) {
-          current = sec.id;
-        }
-      });
-      navAnchors.forEach(function (a) {
-        var href = a.getAttribute("href").replace("#", "");
-        a.classList.toggle("active", href === current);
-      });
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-
-    if (toTop) {
-      toTop.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
+  // mobile menu toggle
+  function closeMenu() {
+    navLinks && navLinks.classList.remove('is-open');
+    burger && burger.classList.remove('is-open');
+    burger && burger.setAttribute('aria-expanded', 'false');
+    scrim && scrim.classList.remove('is-open');
+  }
+  function openMenu() {
+    navLinks && navLinks.classList.add('is-open');
+    burger && burger.classList.add('is-open');
+    burger && burger.setAttribute('aria-expanded', 'true');
+    scrim && scrim.classList.add('is-open');
+  }
+  burger && burger.addEventListener('click', () => {
+    navLinks && navLinks.classList.contains('is-open') ? closeMenu() : openMenu();
   });
+  scrim && scrim.addEventListener('click', closeMenu);
+  links.forEach((a) => a.addEventListener('click', closeMenu));
+
+  // set initial active state
+  setActive('hero');
 })();

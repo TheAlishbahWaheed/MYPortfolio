@@ -1,29 +1,33 @@
-/* main.js — small final touches that don't warrant their own file */
+// ============================================================
+// MAIN — scroll progress bar, back-to-top, footer year
+// ============================================================
 (function () {
-  "use strict";
+  const scrollFill = document.getElementById('scrollFill');
+  const backToTop = document.getElementById('backToTop');
+  const yearEl = document.getElementById('year');
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // "Location" contact line opens a maps search instead of a dead link
-    var locationLink = document.querySelector('[data-location]');
-    if (locationLink) {
-      locationLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.open("https://www.google.com/maps/search/?api=1&query=Lahore,Pakistan", "_blank", "noopener");
-      });
-    }
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Smooth-scroll fallback for browsers that ignore CSS scroll-behavior
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-      link.addEventListener("click", function (e) {
-        var id = link.getAttribute("href");
-        if (id.length <= 1) return;
-        var target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        var navHeight = document.getElementById("siteNav") ? document.getElementById("siteNav").offsetHeight : 0;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight + 1;
-        window.scrollTo({ top: top, behavior: "smooth" });
-      });
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (scrolled / max) * 100 : 0;
+      if (scrollFill) scrollFill.style.width = pct + '%';
+      if (backToTop) backToTop.classList.toggle('is-visible', scrolled > 600);
+      ticking = false;
     });
-  });
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 })();

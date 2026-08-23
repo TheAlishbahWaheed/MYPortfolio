@@ -1,63 +1,68 @@
-/* reveal.js — scroll-triggered reveals + animated counters using IntersectionObserver */
+// ============================================================
+// REVEAL — staggered scroll reveals + animated stat counters
+// ============================================================
 (function () {
-  "use strict";
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = Array.from(document.querySelectorAll('[data-reveal]'));
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var revealEls = document.querySelectorAll(".reveal-up");
-    var counters = document.querySelectorAll(".stat-num[data-count]");
-    var animatedCounters = new WeakSet();
+  if (reduceMotion) {
+    items.forEach((el) => el.classList.add('is-visible'));
+  } else {
+    // stagger items that share the same section
+    const bySection = new Map();
+    items.forEach((el) => {
+      const section = el.closest('section') || document.body;
+      if (!bySection.has(section)) bySection.set(section, []);
+      bySection.get(section).push(el);
+    });
+    bySection.forEach((els) => {
+      els.forEach((el, i) => { el.style.transitionDelay = Math.min(i, 6) * 70 + 'ms'; });
+    });
 
-    function animateCounter(el) {
-      if (animatedCounters.has(el)) return;
-      animatedCounters.add(el);
-      var target = parseInt(el.getAttribute("data-count"), 10) || 0;
-      var duration = 1200;
-      var startTime = null;
-
-      function step(ts) {
-        if (!startTime) startTime = ts;
-        var progress = Math.min((ts - startTime) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-        el.textContent = Math.round(eased * target);
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          el.textContent = target;
-        }
-      }
-      requestAnimationFrame(step);
-    }
-
-    if (!("IntersectionObserver" in window)) {
-      revealEls.forEach(function (el) { el.classList.add("in-view"); });
-      counters.forEach(animateCounter);
-      return;
-    }
-
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            revealObserver.unobserve(entry.target);
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
+    items.forEach((el) => io.observe(el));
+  }
 
-    var counterObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
+  // ---- animated counters ----
+  const counters = Array.from(document.querySelectorAll('[data-count]'));
+  function animateCount(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    const isYear = el.hasAttribute('data-nosep');
+    const dur = 1400;
+    const start = performance.now();
+    function frame(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = Math.round(target * eased);
+      el.textContent = isYear ? String(val) : String(val);
+      if (p < 1) requestAnimationFrame(frame);
+      else el.textContent = String(target);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (counters.length) {
+    const cio = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            counterObserver.unobserve(entry.target);
+            reduceMotion ? (entry.target.textContent = entry.target.getAttribute('data-count')) : animateCount(entry.target);
+            obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
-    counters.forEach(function (el) { counterObserver.observe(el); });
-  });
+    counters.forEach((el) => cio.observe(el));
+  }
 })();

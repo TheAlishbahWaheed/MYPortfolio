@@ -3,70 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alishbah Waheed — Software Developer &amp; AI Enthusiast</title>
-<meta name="description" content="Portfolio of Alishbah Waheed, an IT undergraduate from Lahore, Pakistan building software, AI tools and web experiences. Explore projects, skills, experience and certifications.">
-<meta name="keywords" content="Alishbah Waheed, portfolio, software developer, AI, machine learning, Python developer, Lahore, UMT">
+<title>Alishbah Waheed — AI &amp; Software Developer</title>
+<meta name="description" content="Portfolio of Alishbah Waheed, an Information Technology undergraduate from Lahore, Pakistan building AI/ML solutions, Flask web apps and clean software. Explore projects, experience, skills and certifications.">
+<meta name="keywords" content="Alishbah Waheed, portfolio, software developer, AI, machine learning, Python developer, Flask developer, Lahore, UMT">
 <meta name="author" content="Alishbah Waheed">
-<meta name="theme-color" content="#FAFAFC">
+<meta name="theme-color" content="#06070B">
+<link rel="canonical" href="https://my-portfolio-omega-ruby-61.vercel.app/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Alishbah Waheed — Software Developer &amp; AI Enthusiast">
-<meta property="og:description" content="IT undergraduate crafting thoughtful software, AI-driven tools and clean web experiences.">
+<meta property="og:title" content="Alishbah Waheed — AI &amp; Software Developer">
+<meta property="og:description" content="IT undergraduate building AI/ML solutions, full-stack apps and clean software — from idea to working build.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://my-portfolio-omega-ruby-61.vercel.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alishbah Waheed — AI &amp; Software Developer">
+<meta name="twitter:description" content="IT undergraduate building AI/ML solutions, full-stack apps and clean software.">
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alishbah Waheed",
+  "url": "https://my-portfolio-omega-ruby-61.vercel.app/",
+  "jobTitle": "Information Technology Undergraduate",
+  "affiliation": "University of Management & Technology",
+  "sameAs": [
+    "https://github.com/TheAlishbahWaheed",
+    "https://linkedin.com/in/alishbahwaheed"
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ═══════════ AMBIENT BACKGROUND ═══════════ -->
-<div class="bg-aurora" aria-hidden="true">
-  <span class="aurora-layer layer-1"></span>
-  <span class="aurora-layer layer-2"></span>
-  <span class="aurora-layer layer-3"></span>
-</div>
-<div class="bg-noise" aria-hidden="true"></div>
+<a href="#main" class="sr-only">Skip to content</a>
 
-<!-- ═══════════ LOADING SCREEN ═══════════ -->
-<div id="loader" aria-hidden="true">
+<!-- AMBIENT BACKGROUND -->
+<div class="bg-field" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+<div class="bg-noise" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- CUSTOM CURSOR (desktop only, JS-enabled) -->
+<div class="cursor" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- LOADER -->
+<div id="loader" role="status" aria-label="Loading">
   <div class="loader-inner">
-    <div class="loader-mark">
-      <span>A</span><span>W</span>
-    </div>
+    <div class="loader-mark"><span>A</span><span>W</span></div>
     <div class="loader-bar"><i id="loaderFill"></i></div>
-    <div class="loader-text">crafting the experience<span class="dots">...</span></div>
+    <div class="loader-text">compiling experience<span class="dots">...</span></div>
   </div>
 </div>
 
-<!-- ═══════════ SCROLL PROGRESS ═══════════ -->
+<!-- SCROLL PROGRESS -->
 <div class="scroll-progress" aria-hidden="true"><i id="scrollFill"></i></div>
 
-<!-- ═══════════ NAVBAR ═══════════ -->
+<!-- NAVBAR -->
 <header class="site-nav" id="siteNav">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">Alishbah<span class="dot">.</span></a>
+    <a href="#hero" class="nav-logo"><span class="bracket">&lt;</span>Alishbah<span class="dot">/</span><span class="bracket">&gt;</span></a>
 
     <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#hero" data-nav>Home</a>
-      <a href="#about" data-nav>About</a>
-      <a href="#skills" data-nav>Skills</a>
-      <a href="#experience" data-nav>Experience</a>
-      <a href="#projects" data-nav>Projects</a>
-      <a href="#education" data-nav>Education</a>
-      <a href="#certifications" data-nav>Certifications</a>
-      <a href="#contact" data-nav>Contact</a>
+      <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+      <a href="#hero" data-nav="hero">Home</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#skills" data-nav="skills">Skills</a>
+      <a href="#experience" data-nav="experience">Experience</a>
+      <a href="#projects" data-nav="projects">Projects</a>
+      <a href="#education" data-nav="education">Education</a>
+      <a href="#certifications" data-nav="certifications">Certifications</a>
+      <a href="#contact" data-nav="contact">Contact</a>
     </nav>
 
     <div class="nav-actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.85 1.85M17.95 17.95l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.2 19.8l1.85-1.85M17.95 6.05l1.85-1.85"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 14.7A8.6 8.6 0 1 1 9.3 3.8a7.1 7.1 0 0 0 10.9 10.9Z"/></svg>
+      <button class="btn btn-primary btn-sm nav-resume-btn magnetic" id="resumeOpenBtn" type="button">
+        Resume
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </button>
       <button class="nav-burger" id="navBurger" type="button" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -76,93 +100,104 @@
 </header>
 <div class="nav-scrim" id="navScrim"></div>
 
-<main id="top">
+<main id="main">
 
   <!-- ═══════════ HERO ═══════════ -->
-  <section id="hero" class="hero">
-    <canvas id="constellation" aria-hidden="true"></canvas>
-    <div class="hero-blob blob-a" aria-hidden="true"></div>
-    <div class="hero-blob blob-b" aria-hidden="true"></div>
-    <div class="hero-blob blob-c" aria-hidden="true"></div>
+  <section class="hero" id="hero">
+    <canvas id="neuralCanvas" aria-hidden="true"></canvas>
+    <div class="container hero-inner">
+      <div class="hero-kicker" data-reveal><span class="ping"></span> Open to AI / Software Developer internships &amp; roles</div>
 
-    <div class="hero-inner">
-      
-      <h1 class="hero-title reveal-up" style="--rd:1">
-        Hi, I'm <span class="hero-name">Alishbah Waheed</span>
+      <h1 data-reveal>
+        <span class="line"><span>Hi, I'm Alishbah —</span></span>
+        <span class="line"><span class="grad">I build with code &amp; AI.</span></span>
       </h1>
 
-      <p class="hero-role reveal-up" style="--rd:2">
-        <span class="role-prefix">I build</span>
-        <span class="typewriter" id="typewriter" aria-live="polite"></span><span class="tw-cursor">|</span>
-      </p>
-
-      <p class="hero-desc reveal-up" style="--rd:3">
-        An IT undergraduate with experience in artificial intelligence, software engineering, programming and basic game development — turning analytical problem-solving into practical, working software, one build at a time.
-      </p>
-
-      <div class="hero-actions reveal-up" style="--rd:4">
-        <a href="#projects" class="btn btn-primary">View my work</a>
-        <a href="#contact" class="btn btn-ghost">Let's connect</a>
-        <button type="button" class="btn btn-ghost" data-resume-open>Get my resume</button>
+      <div class="hero-roles mono" aria-live="polite">
+        <span>I build&nbsp;</span><span id="typedRole">AI-powered tools</span><span class="caret" aria-hidden="true"></span>
       </div>
 
-      <div class="hero-socials reveal-up" style="--rd:5">
-        <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="GitHub profile">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.03 3.26 9.28 7.79 10.79.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.17.69-3.84-1.35-3.84-1.35-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.53-.29-5.19-1.27-5.19-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.73 0c2.18-1.47 3.14-1.16 3.14-1.16.62 1.57.23 2.73.11 3.02.73.79 1.17 1.81 1.17 3.05 0 4.36-2.66 5.32-5.2 5.6.41.36.77 1.06.77 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.2.66.79.55 4.52-1.51 7.78-5.76 7.78-10.79C23.02 5.24 18.27.5 12 .5Z"/></svg>
+      <p class="lede" data-reveal>
+        Information Technology undergraduate at the University of Management &amp; Technology, Lahore — building
+        machine learning pipelines, Flask applications and clean web interfaces, and turning analytical
+        problem-solving into working software, one build at a time.
+      </p>
+
+      <div class="hero-cta" data-reveal>
+        <a href="#projects" class="btn btn-primary magnetic">View my work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
-        <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.62 0 4.28 2.38 4.28 5.48v6.26ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        <a href="#contact" class="btn btn-ghost magnetic">Let's connect</a>
+      </div>
+
+      <div class="hero-social" data-reveal>
+        <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="GitHub" class="magnetic">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
         </a>
-        <a href="mailto:alishbaw026@gmail.com" aria-label="Send email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+        <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener" aria-label="LinkedIn" class="magnetic">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+        </a>
+        <a href="mailto:alishbaw026@gmail.com" aria-label="Email" class="magnetic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         </a>
       </div>
     </div>
 
-    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-      <span>Scroll</span>
-      <i></i>
+    <a href="#about" class="hero-scroll" aria-label="Scroll to About section">
+      Scroll <span class="wheel"><i></i></span>
     </a>
   </section>
 
   <!-- ═══════════ ABOUT ═══════════ -->
-  <section id="about" class="section sec-fx">
-    <span class="sec-orb orb-a" aria-hidden="true"></span>
-    <span class="sec-orb orb-b" aria-hidden="true"></span>
-    <span class="sec-grid" aria-hidden="true"></span>
+  <section id="about">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">01 — About Me</p>
-        <h2 class="section-title">The story <em>so far</em></h2>
-      </div>
-
       <div class="about-grid">
-        <div class="about-copy reveal-up">
-          <p class="about-lead">I'm an IT undergraduate at the University of Management &amp; Technology, drawn to how software, artificial intelligence and security fit together to solve real problems.</p>
-          <p>My work spans <strong>software development</strong>, <strong>AI-assisted engineering</strong>, <strong>cyber security awareness</strong>, and a growing curiosity for <strong>game development</strong> with Unity and C#. Through coursework, internships and self-driven projects, I've learned to move from an idea to a working build — applying logical thinking, clean structure and a lot of iteration along the way.</p>
-          <p>I care about writing software that's clear, useful and a little bit delightful — and I'm actively looking for opportunities to keep learning alongside people who care about the same thing.</p>
-
-          <div class="about-tags">
-            <span>Problem Solver</span><span>Fast Learner</span><span>AI-Curious</span><span>Detail-Oriented</span>
+        <div>
+          <div class="eyebrow">// 01 — about.me</div>
+          <h2 class="section-head" style="margin-bottom:26px;">The story <em>so far</em></h2>
+          <div class="about-copy">
+            <p data-reveal>
+              I'm an <strong>Information Technology undergraduate</strong> at the University of Management &amp; Technology,
+              Lahore, drawn to how <strong class="accent">software, artificial intelligence and security</strong> fit
+              together to solve real problems.
+            </p>
+            <p data-reveal>
+              My work spans <strong>machine learning &amp; data preprocessing</strong>, <strong>Flask/Python web development</strong>,
+              <strong>cybersecurity awareness</strong>, and hands-on <strong>Unity/C# game development</strong>. Through internships
+              at FlyRank AI, Foram Studios and Askari Bank — plus coursework and self-driven projects — I've learned to move
+              from an idea to a working build, applying logical thinking, clean structure and a lot of iteration along the way.
+            </p>
+            <p data-reveal>
+              I care about writing software that's clear, useful and a little bit delightful — and I'm actively looking for
+              opportunities to keep learning alongside people who care about the same thing.
+            </p>
+          </div>
+          <div class="trait-row" data-reveal>
+            <span class="trait">Problem Solver</span>
+            <span class="trait">Fast Learner</span>
+            <span class="trait">AI-Curious</span>
+            <span class="trait">Detail-Oriented</span>
           </div>
         </div>
 
-        <div class="about-stats reveal-up">
-          <div class="stat-card">
-            <span class="stat-num" data-count="7">0</span>
-            <span class="stat-label">Projects Built</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" data-count="3">0</span>
-            <span class="stat-label">Internships &amp; Programs</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" data-count="6">0</span>
-            <span class="stat-label">Certifications</span>
-          </div>
-          <div class="stat-card stat-wide">
-            <span class="stat-num-static">2028</span>
-            <span class="stat-label">Expected BS (IT) Graduation, UMT Lahore</span>
+        <div class="stat-panel glass" data-reveal>
+          <div class="stat-grid">
+            <div class="stat-cell">
+              <div class="stat-num" data-count="6">0</div>
+              <div class="stat-label">Projects built</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-num" data-count="3">0</div>
+              <div class="stat-label">Internships completed</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-num" data-count="6">0</div>
+              <div class="stat-label">Certifications earned</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-num" data-count="2028" data-nosep="1">0</div>
+              <div class="stat-label">Expected BS (IT) graduation, UMT</div>
+            </div>
           </div>
         </div>
       </div>
@@ -170,245 +205,288 @@
   </section>
 
   <!-- ═══════════ SKILLS ═══════════ -->
-  <section id="skills" class="section section-alt sec-fx">
-    <span class="sec-orb orb-c" aria-hidden="true"></span>
-    <span class="sec-orb orb-d" aria-hidden="true"></span>
+  <section id="skills">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">02 — Skills</p>
-        <h2 class="section-title">Tools of <em>the trade</em></h2>
+      <div class="eyebrow">// 02 — skills.stack</div>
+      <div class="section-head">
+        <h2>Tools of <em>the trade</em></h2>
+        <p>Languages, frameworks and platforms I reach for when turning an idea into a working build.</p>
       </div>
 
       <div class="skills-grid">
-
-        <div class="skill-panel reveal-up">
-          <h3 class="skill-panel-title">Programming Languages</h3>
-          <div class="skill-bars">
-            <div class="skill-bar" data-level="92"><div class="skill-bar-top"><span>Python</span><em>92%</em></div><div class="skill-track"><i></i></div></div>
-            <div class="skill-bar" data-level="88"><div class="skill-bar-top"><span>JavaScript</span><em>88%</em></div><div class="skill-track"><i></i></div></div>
-            <div class="skill-bar" data-level="86"><div class="skill-bar-top"><span>HTML &amp; CSS</span><em>86%</em></div><div class="skill-track"><i></i></div></div>
-            <div class="skill-bar" data-level="78"><div class="skill-bar-top"><span>C++</span><em>78%</em></div><div class="skill-track"><i></i></div></div>
-            <div class="skill-bar" data-level="72"><div class="skill-bar-top"><span>SQL</span><em>72%</em></div><div class="skill-track"><i></i></div></div>
-            <div class="skill-bar" data-level="68"><div class="skill-bar-top"><span>C# &amp; Assembly Language</span><em>68%</em></div><div class="skill-track"><i></i></div></div>
+        <div class="skill-card glass" data-reveal>
+          <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Programming Languages</h3>
+          <div class="skill-bar-row">
+            <div class="skill-bar-top"><b>Python</b><span>Primary</span></div>
+            <div class="skill-bar"><i data-width="92"></i></div>
           </div>
-          <div class="skill-chip-row">
-            <span class="chip">PHP</span><span class="chip">Bootstrap</span><span class="chip">C</span>
+          <div class="skill-bar-row">
+            <div class="skill-bar-top"><b>JavaScript</b><span>Frequent</span></div>
+            <div class="skill-bar"><i data-width="85"></i></div>
           </div>
-        </div>
-
-        <div class="skill-panel reveal-up">
-          <h3 class="skill-panel-title">Frameworks &amp; Libraries</h3>
-          <div class="skill-orbit-grid">
-            <div class="orbit-chip"><span class="orbit-ring" data-p="85"><span class="orbit-percent">0%</span></span><span class="orbit-label">Flask</span></div>
-            <div class="orbit-chip"><span class="orbit-ring" data-p="80"><span class="orbit-percent">0%</span></span><span class="orbit-label">Pandas</span></div>
-            <div class="orbit-chip"><span class="orbit-ring" data-p="78"><span class="orbit-percent">0%</span></span><span class="orbit-label">NumPy</span></div>
-            <div class="orbit-chip"><span class="orbit-ring" data-p="75"><span class="orbit-percent">0%</span></span><span class="orbit-label">MySQL</span></div>
-            <div class="orbit-chip"><span class="orbit-ring" data-p="70"><span class="orbit-percent">0%</span></span><span class="orbit-label">BeautifulSoup</span></div>
-            <div class="orbit-chip"><span class="orbit-ring" data-p="65"><span class="orbit-percent">0%</span></span><span class="orbit-label">Threading</span></div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-top"><b>HTML &amp; CSS</b><span>Frequent</span></div>
+            <div class="skill-bar"><i data-width="88"></i></div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-top"><b>SQL</b><span>Regular</span></div>
+            <div class="skill-bar"><i data-width="75"></i></div>
+          </div>
+          <div class="chip-row" style="margin-top:18px;">
+            <span class="chip">C++</span><span class="chip">C</span><span class="chip">C#</span>
+            <span class="chip">PHP</span><span class="chip">Assembly</span><span class="chip">MATLAB</span>
           </div>
         </div>
 
-        <div class="skill-panel reveal-up">
-          <h3 class="skill-panel-title">Tools &amp; Platforms</h3>
-          <div class="skill-chip-row wrap">
-            <span class="chip chip-lg">VS Code</span><span class="chip chip-lg">PyCharm</span><span class="chip chip-lg">Jupyter Notebook</span>
-            <span class="chip chip-lg">Git</span><span class="chip chip-lg">GitHub</span><span class="chip chip-lg">Git Bash</span>
-            <span class="chip chip-lg">Google Colab</span><span class="chip chip-lg">Cisco Packet Tracer</span><span class="chip chip-lg">Unity Hub</span>
+        <div class="skill-card glass" data-reveal>
+          <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>Frameworks &amp; Libraries</h3>
+          <div class="chip-row">
+            <span class="chip">Flask</span><span class="chip">Django</span><span class="chip">FastAPI</span>
+            <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span>
+            <span class="chip">Matplotlib</span><span class="chip">MySQL</span><span class="chip">BeautifulSoup4</span>
+            <span class="chip">Bootstrap</span><span class="chip">JSON</span><span class="chip">Threading</span>
           </div>
         </div>
 
-        <div class="skill-panel reveal-up">
-          <h3 class="skill-panel-title">Focus Areas</h3>
-          <div class="focus-list">
-            <div class="focus-item"><span class="focus-ico">◆</span>Artificial Intelligence &amp; Machine Learning</div>
-            <div class="focus-item"><span class="focus-ico">◆</span>Software Engineering &amp; Clean Architecture</div>
-            <div class="focus-item"><span class="focus-ico">◆</span>Cyber Security Awareness</div>
-            <div class="focus-item"><span class="focus-ico">◆</span>Game Development (Unity &amp; C#)</div>
+        <div class="skill-card glass" data-reveal>
+          <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>Tools &amp; Platforms</h3>
+          <div class="chip-row">
+            <span class="chip">VS Code</span><span class="chip">PyCharm</span><span class="chip">Jupyter Notebook</span>
+            <span class="chip">Git &amp; GitHub</span><span class="chip">Git Bash</span><span class="chip">Google Colab</span>
+            <span class="chip">Cisco Packet Tracer</span><span class="chip">Unity Hub</span>
           </div>
-          <h3 class="skill-panel-title" style="margin-top:1.5rem">Languages</h3>
-          <div class="lang-row"><span>English</span><span class="lang-tag">Professional</span></div>
-          <div class="lang-row"><span>Urdu</span><span class="lang-tag">Native</span></div>
         </div>
 
+        <div class="skill-card glass" data-reveal>
+          <h3><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></span>Focus Areas</h3>
+          <ul class="focus-list">
+            <li><span class="dot"></span>Artificial Intelligence &amp; Machine Learning</li>
+            <li><span class="dot"></span>Software Engineering &amp; Clean Architecture</li>
+            <li><span class="dot"></span>Cyber Security &amp; Digital Governance</li>
+            <li><span class="dot"></span>Game Development (Unity &amp; C#)</li>
+          </ul>
+          <div class="lang-row" style="margin-top:24px;">
+            <div class="lang-item"><b>English</b><span>Professional proficiency</span></div>
+            <div class="lang-item"><b>Urdu</b><span>Native proficiency</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════ EXPERIENCE ═══════════ -->
-  <section id="experience" class="section">
+  <section id="experience">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">03 — Experience</p>
-        <h2 class="section-title">Where I've <em>worked</em></h2>
+      <div class="eyebrow">// 03 — experience.log</div>
+      <div class="section-head">
+        <h2>Where I've <em>worked</em></h2>
+        <p>Internships and hands-on programs that took ideas from brief to build.</p>
       </div>
 
       <div class="timeline">
-
-        <div class="tl-item reveal-up">
+        <div class="tl-item" data-reveal>
           <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3>AI Intern</h3>
-                <p class="tl-org">FlyRank AI · Remote, Pakistan</p>
-              </div>
-              <span class="tl-date">Jul 2026</span>
-            </div>
+          <div class="tl-card glass">
+            <div class="tl-top"><span class="tl-role">Banking Operations Intern</span><span class="tl-date">Aug 2026</span></div>
+            <div class="tl-org">Askari Bank · Lahore, Pakistan</div>
             <ul class="tl-list">
-              <li>Developed responsive web interfaces using HTML, CSS and JavaScript with AI-assisted development practices.</li>
-              <li>Applied AI tools to accelerate frontend development, debugging and code optimization across hands-on assignments and a capstone project.</li>
-              <li>Built portfolio-ready frontend projects while strengthening modern web development and AI integration skills.</li>
+              <li>Supported daily banking operations, customer service and transaction processing, ensuring accuracy and timely assistance.</li>
+              <li>Maintained operational records and documentation while following established compliance and banking procedures.</li>
+              <li>Assisted with routine administrative and operational tasks, contributing to smooth day-to-day branch activities.</li>
+              <li>Strengthened accuracy, teamwork, time management and problem-solving skills in a professional banking environment.</li>
             </ul>
           </div>
         </div>
 
-        <div class="tl-item reveal-up">
+        <div class="tl-item" data-reveal>
           <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3>Cyber-Security Workshop — Team Lead</h3>
-                <p class="tl-org">American Lycetuff School · Lahore, Pakistan</p>
-              </div>
-              <span class="tl-date">Dec 2025</span>
-            </div>
+          <div class="tl-card glass">
+            <div class="tl-top"><span class="tl-role">AI Fluency &amp; Machine Learning Intern</span><span class="tl-date">Jun – Aug 2026</span></div>
+            <div class="tl-org">FlyRank AI · Remote, Pakistan</div>
+            <ul class="tl-list">
+              <li>Developed responsive web interfaces using HTML, CSS and JavaScript with AI-assisted development practices.</li>
+              <li>Applied AI tools to accelerate frontend development, debugging and code optimization.</li>
+              <li>Developed machine learning models using Python, data preprocessing and supervised learning techniques.</li>
+              <li>Applied ML algorithms for data analysis, model training, evaluation and prediction, building portfolio-ready ML solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-reveal>
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <div class="tl-top"><span class="tl-role">Gaming Development Intern</span><span class="tl-date">Jun – Jul 2026</span></div>
+            <div class="tl-org">Foram Studios · Remote, Pakistan</div>
+            <ul class="tl-list">
+              <li>Developed interactive game experiences using Unity and C# through hands-on game development projects.</li>
+              <li>Applied 2D/3D game development concepts, including gameplay mechanics, physics, animation and scene management.</li>
+              <li>Built portfolio-ready game projects while strengthening skills in Unity, C#, game design and interactive development.</li>
+              <li>Debugged and optimized gameplay systems, scripts and scene interactions to improve overall game functionality.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" data-reveal>
+          <div class="tl-dot"></div>
+          <div class="tl-card glass">
+            <div class="tl-top"><span class="tl-role">Cyber-Security Workshop — Team Lead</span><span class="tl-date">Dec 2025</span></div>
+            <div class="tl-org">American Lycetuff School · Lahore, Pakistan</div>
             <ul class="tl-list">
               <li>Conducted a cybersecurity workshop for 25+ students on online safety, password security and threat awareness.</li>
               <li>Delivered hands-on activities and practical demonstrations to promote digital literacy and safe technology practices.</li>
+              <li>Coordinated workshop activities and team responsibilities to ensure effective delivery of interactive learning sessions.</li>
             </ul>
           </div>
         </div>
-
-        <div class="tl-item reveal-up">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3>Python Programming Intern</h3>
-                <p class="tl-org">CodeAlpha · Remote, Pakistan</p>
-              </div>
-              <span class="tl-date">Dec 2025</span>
-            </div>
-            <ul class="tl-list">
-              <li>Developed Python projects involving automation, chatbots and game-based applications.</li>
-              <li>Applied core Python concepts including file handling, OOP, functions and data structures.</li>
-            </ul>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
   <!-- ═══════════ PROJECTS ═══════════ -->
-  <section id="projects" class="section section-alt sec-fx">
-    <span class="sec-orb orb-a" aria-hidden="true"></span>
-    <span class="sec-orb orb-e" aria-hidden="true"></span>
-    <span class="sec-grid" aria-hidden="true"></span>
+  <section id="projects">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">04 — Projects</p>
-        <h2 class="section-title">Things I've <em>built</em></h2>
+      <div class="eyebrow">// 04 — projects.build()</div>
+      <div class="section-head">
+        <h2>Things I've <em>built</em></h2>
+        <p>A mix of AI/ML, full-stack and front-end projects — filter by category or open a card for the full picture.</p>
       </div>
 
-      <div class="proj-filters reveal-up" id="projFilters">
-        <button class="pf-chip active" data-filter="all">All</button>
-        <button class="pf-chip" data-filter="python">Python</button>
-        <button class="pf-chip" data-filter="web">Web</button>
-        <button class="pf-chip" data-filter="ai">AI</button>
+      <div class="proj-filters" role="tablist" aria-label="Filter projects">
+        <button class="proj-filter is-active" data-filter="all" type="button">All</button>
+        <button class="proj-filter" data-filter="ai" type="button">AI / ML</button>
+        <button class="proj-filter" data-filter="web" type="button">Web</button>
+        <button class="proj-filter" data-filter="python" type="button">Python</button>
       </div>
 
       <div class="proj-grid" id="projGrid">
 
-        <article class="proj-card reveal-up" data-tags="web">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="ai python"
+          data-title="Google Search Ranking &amp; Discoverability Capstone"
+          data-desc="A machine learning capstone analyzing search-ranking performance — from raw data to trained models and actionable insight, built during the FlyRank AI Fluency &amp; ML internship."
+          data-details="Built ML pipelines for search-ranking analysis with Python, NumPy, Pandas and Scikit-learn, covering data preprocessing, feature engineering, model training and evaluation.|Implemented and compared Logistic Regression, Decision Tree and Random Forest models, using Matplotlib to visualize ranking performance and surface actionable insights."
+          data-tags="Python,Scikit-learn,Pandas,NumPy"
+          data-repo="https://github.com/TheAlishbahWaheed/flyrank-ml-internship"
+          data-live="">
+          <div class="proj-top">
             <span class="proj-index">01</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View Real-Time Chat System on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed/flyrank-ml-internship" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">Real-Time Chat System</h3>
-          <p class="proj-desc">A real-time messaging application demonstrating live communication between users, built with a focus on responsive interaction and clean, structured code.</p>
-          <div class="proj-stack"><span>C++</span><span>Console App</span><span>Real-Time</span></div>
+          <h3>Google Search Ranking Capstone</h3>
+          <p>ML pipelines analyzing search-ranking performance — preprocessing, feature engineering, model training and evaluation.</p>
+          <div class="proj-tags"><span>Python</span><span>Scikit-learn</span><span>Pandas</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
-        <article class="proj-card reveal-up" data-tags="python web">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="python web"
+          data-title="Reflecto — Open-Source Productivity Platform"
+          data-desc="A Flask-based productivity and journaling platform combining journaling, task management, study notes and mood tracking in one personalized dashboard."
+          data-details="Built with Python, HTML, CSS and JavaScript — integrating journaling, task management, study notes and mood tracking.|Implemented user authentication, productivity tracking, data export and customizable themes for a structured, personalized experience.|Maintained as an open-source project with active iteration on the dashboard and export features."
+          data-tags="Flask,Python,JSON,Open Source"
+          data-repo="https://github.com/TheAlishbahWaheed/Reflecto"
+          data-live="">
+          <div class="proj-top">
             <span class="proj-index">02</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View Smart Home Automation System on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed/Reflecto" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">Smart Home Automation System</h3>
-          <p class="proj-desc">A Python-based smart home simulation applying structured design and data-handling principles to manage devices and automate tasks using DSA concepts.</p>
-          <div class="proj-stack"><span>Python</span><span>SQL</span><span>HTML/CSS/JS</span></div>
+          <h3>Reflecto — Open Source</h3>
+          <p>A personal productivity &amp; journaling web app with mood tracking, notes and data export.</p>
+          <div class="proj-tags"><span>Flask</span><span>Python</span><span>Open Source</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
-        <article class="proj-card reveal-up" data-tags="web">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="python web"
+          data-title="Smart Home Automation System"
+          data-desc="A responsive smart-home automation dashboard for managing connected devices, applying object-oriented design principles throughout."
+          data-details="Built with Python (Flask), HTML, CSS, JavaScript and SQLite to manage connected devices from a single dashboard.|Implemented user authentication, device controls and interactive animations.|Applied OOP principles including inheritance, encapsulation, abstraction and polymorphism throughout the codebase."
+          data-tags="Flask,Python,SQLite,OOP"
+          data-repo="https://github.com/TheAlishbahWaheed"
+          data-live="">
+          <div class="proj-top">
             <span class="proj-index">03</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View DSA Visualizer on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">DSA Visualizer</h3>
-          <p class="proj-desc">An interactive tool for visualizing data structures and algorithms in action, making abstract computational concepts easier to explore and understand.</p>
-          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span></div>
+          <h3>Smart Home Automation</h3>
+          <p>A Flask + SQLite dashboard for managing connected devices, built on solid OOP foundations.</p>
+          <div class="proj-tags"><span>Flask</span><span>SQLite</span><span>OOP</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
-        <article class="proj-card reveal-up" data-tags="python ai">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="web"
+          data-title="DSA Visualizer"
+          data-desc="An interactive Data Structures &amp; Algorithms visualizer that turns abstract computational concepts into real-time animations."
+          data-details="Built with HTML, CSS, Bootstrap and JavaScript to demonstrate algorithm execution through real-time animations.|Implemented Bubble, Selection, Insertion and Merge Sort, along with Linked List, Stack and Queue operations.|Added interactive controls and adjustable animation speed so learners can step through each structure."
+          data-tags="HTML,CSS,Bootstrap,JavaScript"
+          data-repo="https://github.com/TheAlishbahWaheed/First-Front-End-Project-DSA-Visualizer"
+          data-live="">
+          <div class="proj-top">
             <span class="proj-index">04</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View AI Resume Analyzer on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed/First-Front-End-Project-DSA-Visualizer" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">AI Resume Analyzer</h3>
-          <p class="proj-desc">A Python tool that parses and evaluates resumes, applying data handling and text-processing techniques to surface structured insight from unstructured documents.</p>
-          <div class="proj-stack"><span>Python</span><span>Flask</span><span>Text Processing</span><span>SQL</span></div>
+          <h3>DSA Visualizer</h3>
+          <p>Real-time animations of sorting algorithms and core data structures with adjustable speed.</p>
+          <div class="proj-tags"><span>HTML</span><span>Bootstrap</span><span>JS</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
-        <article class="proj-card reveal-up" data-tags="python web">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="ai python web"
+          data-title="AI Resume Analyzer"
+          data-desc="A Python tool that parses and evaluates resumes, applying text-processing techniques to surface structured insight from unstructured documents."
+          data-details="Built with Python and Flask to parse resume documents and extract structured data from unstructured text.|Applies keyword and formatting checks to surface ATS-style feedback for the applicant.|Stores parsed results with SQL for review and comparison across uploads."
+          data-tags="Python,Flask,SQL,Text Processing"
+          data-repo="https://github.com/TheAlishbahWaheed/Resume-Analyzer"
+          data-live="">
+          <div class="proj-top">
             <span class="proj-index">05</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View Reflecto on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed/Resume-Analyzer" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">Reflecto — Open Source</h3>
-          <p class="proj-desc">A personal productivity web app for mood tracking, journaling, notes and tasks — built in both PHP and Python/Flask versions with PDF export and theme switching.</p>
-          <div class="proj-stack"><span>Flask</span><span>Python</span><span>JSON</span><span>Vercel</span></div>
+          <h3>AI Resume Analyzer</h3>
+          <p>Parses and evaluates resumes, surfacing structured, ATS-style feedback from raw text.</p>
+          <div class="proj-tags"><span>Python</span><span>Flask</span><span>SQL</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
-        <article class="proj-card reveal-up" data-tags="web ai">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
+        <article class="proj-card glass" data-reveal data-category="web"
+          data-title="This Portfolio"
+          data-desc="A fully custom, animated personal site — this one — built and continually iterated to showcase education, skills, experience and projects."
+          data-details="Hand-built with vanilla HTML, CSS and JavaScript — no framework overhead.|Custom loader, scroll-reveal system, animated project filters and a dark glassmorphic design language.|Deployed on Vercel with a continuous-improvement mindset as new work ships."
+          data-tags="HTML5,CSS3,JavaScript,Vercel"
+          data-repo="https://github.com/TheAlishbahWaheed/MyPortfolio"
+          data-live="https://my-portfolio-omega-ruby-61.vercel.app/">
+          <div class="proj-top">
             <span class="proj-index">06</span>
             <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View FlyRank AI Internship Capstone on GitHub">GitHub ↗</a>
+              <a href="https://github.com/TheAlishbahWaheed/MyPortfolio" target="_blank" rel="noopener" aria-label="View on GitHub" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+              </a>
+              <a href="https://my-portfolio-omega-ruby-61.vercel.app/" target="_blank" rel="noopener" aria-label="View live site" onclick="event.stopPropagation()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              </a>
             </div>
           </div>
-          <h3 class="proj-title">FlyRank AI — Capstone</h3>
-          <p class="proj-desc">A capstone frontend build combining responsive interfaces with AI-assisted development practices — from debugging to code optimization.</p>
-          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>AI Tools</span></div>
-        </article>
-
-        <article class="proj-card reveal-up" data-tags="web">
-          <div class="proj-card-glow"></div>
-          <div class="proj-head">
-            <span class="proj-index">07</span>
-            <div class="proj-links">
-              <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="View My Portfolio on GitHub">GitHub ↗</a>
-            </div>
-          </div>
-          <h3 class="proj-title">This Portfolio</h3>
-          <p class="proj-desc">A fully custom, animated personal site — this one — showcasing education, skills, experience and projects with a soft, modern aesthetic.</p>
-          <div class="proj-stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          <h3>This Portfolio</h3>
+          <p>A hand-built, continually iterated personal site with a dark glassmorphic design language.</p>
+          <div class="proj-tags"><span>HTML5</span><span>CSS3</span><span>JS</span></div>
+          <button class="proj-more-btn" type="button">View details <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg></button>
         </article>
 
       </div>
@@ -416,186 +494,231 @@
     </div>
   </section>
 
-  <!-- ═══════════ EDUCATION ═══════════ -->
-  <section id="education" class="section">
+  <!-- ═══════════ AI VISUALIZATION ═══════════ -->
+  <section id="ai-focus">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">05 — Education</p>
-        <h2 class="section-title">Academic <em>journey</em></h2>
+      <div class="eyebrow">// 05 — how.i.work</div>
+      <div class="ai-viz-wrap">
+        <div class="ai-viz-panel glass" data-reveal>
+          <canvas id="aiCanvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="ai-copy">
+          <h2 class="section-head" style="margin-bottom:20px;">From <em>data</em> to <em>decisions</em></h2>
+          <p data-reveal>My machine learning work follows the same loop every time — preprocess, engineer features, train, evaluate,
+            then iterate — whether the model is scoring search rankings or reading a resume.</p>
+          <div class="ai-pipeline" data-reveal>
+            <div class="ai-pipeline-step glass"><span class="num">01</span><span class="label">Collect &amp; preprocess raw data with Pandas &amp; NumPy</span></div>
+            <div class="ai-pipeline-step glass"><span class="num">02</span><span class="label">Engineer features that actually move the model</span></div>
+            <div class="ai-pipeline-step glass"><span class="num">03</span><span class="label">Train &amp; compare models with Scikit-learn</span></div>
+            <div class="ai-pipeline-step glass"><span class="num">04</span><span class="label">Evaluate, visualize and ship the version that works</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EDUCATION ═══════════ -->
+  <section id="education">
+    <div class="container">
+      <div class="eyebrow">// 06 — education.json</div>
+      <div class="section-head">
+        <h2>Academic <em>journey</em></h2>
       </div>
 
-      <div class="edu-grid">
-
-        <div class="edu-card reveal-up featured">
-          <div class="edu-date">10/2024 – 07/2028</div>
-          <h3>Bachelor of Science in Information Technology</h3>
-          <p class="edu-org">University of Management &amp; Technology · Lahore, Pakistan</p>
-          <p class="edu-courses"><strong>Core courses:</strong> Object-Oriented Programming, Data Structures, Assembly Language, Software Engineering, Database Systems, Computer Networks, Web Technologies, Open-Source Software Development.</p>
+      <div class="edu-list glass" style="padding:8px 26px;">
+        <div class="edu-item" data-reveal>
+          <div class="edu-date mono">10/2024 – 07/2028</div>
+          <div>
+            <div class="edu-title">Bachelor of Science in Information Technology</div>
+            <div class="edu-org">University of Management &amp; Technology · Lahore, Pakistan</div>
+            <div class="edu-note"><b>Core courses:</b> Object-Oriented Programming, Digital Logic Design, Data Structures, Assembly Language, Software Engineering, Database Systems, Computer Networks, Web Technologies, Open-Source Software Development, Professional Practices, Database Administration &amp; Management, Information Security, Artificial Intelligence, Machine Learning, Operating Systems, Innovation &amp; Entrepreneurship.</div>
+          </div>
         </div>
 
-        <div class="edu-card reveal-up">
-          <div class="edu-date">2025 – 2026</div>
-          <h3>Aspire Leadership Program <span class="edu-tag">Virtual</span></h3>
-          <p class="edu-org">Aspire Institute · Massachusetts, United States</p>
-          <p class="edu-courses">An international online program developing leadership, teamwork, communication and digital-collaboration skills.</p>
+        <div class="edu-item" data-reveal>
+          <div class="edu-date mono">2025 – 2026</div>
+          <div>
+            <div class="edu-title">Aspire Leadership Program (Virtual)</div>
+            <div class="edu-org">Aspire Institute · Massachusetts, United States</div>
+            <div class="edu-note">An international online program developing leadership, teamwork, communication and digital-collaboration skills.</div>
+          </div>
         </div>
 
-        <div class="edu-card reveal-up">
-          <div class="edu-date">2022 – 2024</div>
-          <h3>ICS — Physics</h3>
-          <p class="edu-org">Lahore College for Women University · Lahore, Pakistan</p>
-          <p class="edu-courses"><strong>Core courses:</strong> Physics, Mathematics, Computer Science (C Language / Database).</p>
+        <div class="edu-item" data-reveal>
+          <div class="edu-date mono">2022 – 2024</div>
+          <div>
+            <div class="edu-title">ICS — Physics</div>
+            <div class="edu-org">Lahore College for Women University · Lahore, Pakistan</div>
+            <div class="edu-note"><b>Core courses:</b> Physics, Mathematics, Computer Science (C Language / Database).</div>
+          </div>
         </div>
 
-        <div class="edu-card reveal-up">
-          <div class="edu-date">2009 – 2022</div>
-          <h3>Computer Science</h3>
-          <p class="edu-org">American Lycetuff School · Lahore, Pakistan</p>
-          <p class="edu-courses">Core studies in Mathematics, Physics, Chemistry and Computer Science — establishing core scientific and computing knowledge.</p>
+        <div class="edu-item" data-reveal>
+          <div class="edu-date mono">2009 – 2022</div>
+          <div>
+            <div class="edu-title">Computer Science</div>
+            <div class="edu-org">American Lycetuff School · Lahore, Pakistan</div>
+            <div class="edu-note">Core studies in Mathematics, Physics, Chemistry and Computer Science, establishing core scientific and computing knowledge.</div>
+          </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ═══════════ CERTIFICATIONS ═══════════ -->
-  <section id="certifications" class="section section-alt">
+  <section id="certifications">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">06 — Certifications</p>
-        <h2 class="section-title">Verified <em>learning</em></h2>
+      <div class="eyebrow">// 07 — certifications.verified</div>
+      <div class="section-head">
+        <h2>Verified <em>learning</em></h2>
       </div>
 
-      <div class="cert-grid">
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">🎓</div>
-          <h3>360-Degree Transformation Program</h3>
-          <p>Certificate · University of Management &amp; Technology</p>
+      <div class="grid-3">
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">🎓</div>
+          <h4>360-Degree Transformation Program</h4>
+          <span>Certificate · University of Management &amp; Technology</span>
         </div>
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">🐍</div>
-          <h3>Python Programming</h3>
-          <p>E-Certificate · FreeCodeCamp</p>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">🐍</div>
+          <h4>Python Programming</h4>
+          <span>E-Certificate · FreeCodeCamp</span>
         </div>
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">🤖</div>
-          <h3>Introduction to Artificial Intelligence</h3>
-          <p>E-Certificate · Coursera.org</p>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">🤖</div>
+          <h4>Introduction to Artificial Intelligence</h4>
+          <span>E-Certificate · Coursera.org</span>
         </div>
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">☁️</div>
-          <h3>Introduction to IT &amp; AWS Cloud</h3>
-          <p>E-Certificate · AWS</p>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">☁️</div>
+          <h4>Introduction to IT &amp; AWS Cloud</h4>
+          <span>E-Certificate · AWS</span>
         </div>
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">🛡️</div>
-          <h3>Cyber Security Analyst</h3>
-          <p>E-Certificate · Forage</p>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">🛡️</div>
+          <h4>Cyber Security Analyst</h4>
+          <span>E-Certificate · Forage</span>
         </div>
-        <div class="cert-card reveal-up">
-          <div class="cert-icon">✨</div>
-          <h3>Anthropic Courses</h3>
-          <p>E-Certificates · Anthropic</p>
+        <div class="cert-card glass" data-reveal>
+          <div class="cert-emoji">✨</div>
+          <h4>Anthropic Courses</h4>
+          <span>E-Certificates · Anthropic</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══════════ ACHIEVEMENTS ═══════════ -->
-  <section id="achievements" class="section">
+  <section id="achievements">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">07 — Achievements</p>
-        <h2 class="section-title">Moments I'm <em>proud of</em></h2>
+      <div class="eyebrow">// 08 — achievements.log</div>
+      <div class="section-head">
+        <h2>Moments I'm <em>proud of</em></h2>
       </div>
 
-      <div class="ach-grid">
-        <div class="ach-card reveal-up">
-          <div class="ach-num">25+ Students</div>
-          <h3>Led a Cyber-Security Workshop</h3>
+      <div class="grid-3">
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">25+</div>
+          <h4>Led a Cyber-Security Workshop</h4>
           <p>Planned and delivered a hands-on workshop for 25+ students on online safety, password hygiene and threat awareness as Team Lead.</p>
         </div>
-        <div class="ach-card reveal-up">
-          <div class="ach-num">International</div>
-          <h3>Selected for Aspire Leadership Program</h3>
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">25%</div>
+          <h4>Merit Scholarship, UMT</h4>
+          <p>Received a merit-based scholarship covering 25% tuition for four years, maintained through consistent academic excellence.</p>
+        </div>
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">1st</div>
+          <h4>Academic Excellence, American Lycetuff School</h4>
+          <p>Consistently secured 1st, 2nd and 3rd positions throughout secondary school, receiving multiple academic trophies and gold medals.</p>
+        </div>
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">Int'l</div>
+          <h4>Selected for Aspire Leadership Program</h4>
           <p>Chosen for a competitive international virtual program (Aspire Institute, Massachusetts) building leadership and cross-cultural collaboration skills.</p>
         </div>
-        <div class="ach-card reveal-up">
-          <div class="ach-num">07 Projects</div>
-          <h3>Shipped Seven Independent Projects</h3>
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">06</div>
+          <h4>Shipped Six Independent Projects</h4>
           <p>Designed and built a range of academic and personal projects spanning AI, automation, web development and open-source contribution.</p>
         </div>
-        <div class="ach-card reveal-up">
-          <div class="ach-num">360° Program</div>
-          <h3>Completed a 360° Transformation Program</h3>
+        <div class="ach-card glass" data-reveal>
+          <div class="ach-num">360°</div>
+          <h4>Completed a 360° Transformation Program</h4>
           <p>Completed a holistic personal and professional development program through the University of Management &amp; Technology.</p>
         </div>
+      </div>
+
+      <div class="research-card glass" data-reveal style="margin-top:26px;">
+        <div class="eyebrow" style="margin-bottom:12px;">// research &amp; publication</div>
+        <h3>Artificial Intelligence and Digital Governance: Opportunities, Risks, and Policy</h3>
+        <div class="research-meta">Independent Policy Research Article · Aug 2026</div>
+        <ul>
+          <li>Analyzed the opportunities and risks of AI adoption in digital governance — public-service efficiency, data-driven decision-making, privacy, bias, transparency, accountability and digital inequality.</li>
+          <li>Compared AI governance approaches across the European Union, United States, United Kingdom and UNESCO.</li>
+          <li>Proposed policy mechanisms including risk-based regulation, algorithmic impact assessments, human oversight, transparency, independent auditing, procurement standards and public participation.</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ═══════════ CONTACT ═══════════ -->
-  <section id="contact" class="section sec-fx">
-    <span class="sec-orb orb-b" aria-hidden="true"></span>
-    <span class="sec-orb orb-d" aria-hidden="true"></span>
+  <section id="contact">
     <div class="container">
-      <div class="section-head reveal-up">
-        <p class="eyebrow">09 — Contact</p>
-        <h2 class="section-title">Let's build <em>something</em></h2>
+      <div class="eyebrow">// 09 — contact.send()</div>
+      <div class="section-head">
+        <h2>Let's build <em>something</em></h2>
+        <p>Have a project in mind, an internship opportunity, or just want to talk tech &amp; AI? I'd love to hear from you.</p>
       </div>
 
       <div class="contact-grid">
-        <div class="contact-info reveal-up">
-          <p class="contact-lead">Have a project in mind, an internship opportunity, or just want to talk tech &amp; AI? I'd love to hear from you.</p>
-
-          <a class="contact-line" href="mailto:alishbaw026@gmail.com">
-            <span class="cl-label">Email</span>
-            <span class="cl-value">alishbaw026@gmail.com</span>
+        <div class="contact-links" data-reveal>
+          <a class="contact-link-row" href="mailto:alishbaw026@gmail.com">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="meta"><span>Email</span><b>alishbaw026@gmail.com</b></span>
           </a>
-          
+          <a class="contact-link-row" href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg></span>
+            <span class="meta"><span>LinkedIn</span><b>linkedin.com/in/alishbahwaheed</b></span>
           </a>
-          <a class="contact-line" href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener">
-            <span class="cl-label">LinkedIn</span>
-            <span class="cl-value">linkedin.com/in/alishbahwaheed</span>
+          <a class="contact-link-row" href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.41.21 2.46.1 2.72.65.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg></span>
+            <span class="meta"><span>GitHub</span><b>github.com/TheAlishbahWaheed</b></span>
           </a>
-          <a class="contact-line" href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener">
-            <span class="cl-label">GitHub</span>
-            <span class="cl-value">github.com/TheAlishbahWaheed</span>
-          </a>
-          <a class="contact-line" href="#" data-location>
-            <span class="cl-label">Location</span>
-            <span class="cl-value">Lahore, Pakistan</span>
+          <a class="contact-link-row" href="#" onclick="return false" style="cursor:default;">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="meta"><span>Location</span><b>Lahore, Pakistan</b></span>
           </a>
         </div>
 
-        <form class="contact-form reveal-up" id="contactForm" novalidate>
+        <form class="form-panel glass" id="contactForm" data-reveal novalidate>
           <div class="form-row">
-            <div class="form-group">
+            <div class="field" id="fieldName">
               <label for="cName">Name</label>
-              <input type="text" id="cName" name="name" placeholder="Your name" required>
-              <span class="form-error" data-error-for="cName"></span>
+              <input type="text" id="cName" name="name" placeholder="Your name" autocomplete="name">
+              <span class="field-error">Please enter your name.</span>
             </div>
-            <div class="form-group">
+            <div class="field" id="fieldEmail">
               <label for="cEmail">Email</label>
-              <input type="email" id="cEmail" name="email" placeholder="your@email.com" required>
-              <span class="form-error" data-error-for="cEmail"></span>
+              <input type="email" id="cEmail" name="email" placeholder="you@email.com" autocomplete="email">
+              <span class="field-error">Please enter a valid email.</span>
             </div>
           </div>
-          <div class="form-group">
+          <div class="field" id="fieldSubject">
             <label for="cSubject">Subject</label>
-            <input type="text" id="cSubject" name="subject" placeholder="What's this about?" required>
-            <span class="form-error" data-error-for="cSubject"></span>
+            <input type="text" id="cSubject" name="subject" placeholder="What's this about?">
+            <span class="field-error">Please add a subject.</span>
           </div>
-          <div class="form-group">
+          <div class="field" id="fieldMessage">
             <label for="cMessage">Message</label>
-            <textarea id="cMessage" name="message" rows="5" placeholder="Tell me a bit more..." required></textarea>
-            <span class="form-error" data-error-for="cMessage"></span>
+            <textarea id="cMessage" name="message" placeholder="Tell me a bit about it..."></textarea>
+            <span class="field-error">Please write a short message.</span>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">
-            <span class="btn-label">Send Message</span>
-            <span class="btn-spinner" aria-hidden="true"></span>
+          <button type="submit" class="btn btn-primary magnetic" style="width:100%;">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
           </button>
-          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <div class="form-status" id="formStatus"></div>
         </form>
       </div>
     </div>
@@ -603,84 +726,100 @@
 
 </main>
 
-<!-- ═══════════ RESUME MODAL ═══════════ -->
-<div class="resume-modal-overlay" id="resumeModalOverlay" aria-hidden="true">
-  <div class="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
-    <button class="resume-modal-close" id="resumeModalClose" type="button" aria-label="Close">&times;</button>
-
-    <div class="resume-modal-step" id="resumeStepForm">
-      <div class="resume-modal-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/></svg>
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3><span class="mono" style="color:var(--text-faint);">&lt;</span>Alishbah<span style="color:var(--cyan);">/</span><span class="mono" style="color:var(--text-faint);">&gt;</span></h3>
+        <p>AI &amp; Software Developer building thoughtful, working software from Lahore, Pakistan.</p>
       </div>
-      <h3 id="resumeModalTitle">Get my resume</h3>
-      <p class="resume-modal-sub">Drop in your email — I'll send a copy straight to your inbox, and the download will start right away.</p>
-
-      <form id="resumeForm" novalidate>
-        <div class="form-group">
-          <label for="resumeEmail">Email address</label>
-          <input type="email" id="resumeEmail" name="resumeEmail" placeholder="you@gmail.com" required autocomplete="email">
-          <span class="form-error" data-error-for="resumeEmail"></span>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
         </div>
-        <button type="submit" class="btn btn-primary form-submit" id="resumeSubmitBtn">
-          <span class="btn-label">Send &amp; Download</span>
-          <span class="btn-spinner" aria-hidden="true"></span>
-        </button>
-      </form>
-      <p class="form-status" id="resumeModalStatus" role="status" aria-live="polite"></p>
-    </div>
-
-    <div class="resume-modal-step resume-modal-success" id="resumeStepSuccess" hidden>
-      <div class="resume-modal-icon success">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <div class="footer-col">
+          <h4>Elsewhere</h4>
+          <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:alishbaw026@gmail.com">Email</a>
+        </div>
       </div>
-      <h3>All set!</h3>
-      <p class="resume-modal-sub" id="resumeSuccessMsg">Your download has started, and a copy is on its way to your inbox.</p>
-      <button type="button" class="btn btn-ghost" id="resumeModalDone">Close</button>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Alishbah Waheed. Designed &amp; built with care.</span>
+      <span class="mono">Lahore, Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- ═══════════ PROJECT DETAIL MODAL ═══════════ -->
+<div class="modal-overlay" id="projModal" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h3 id="modalTitle"></h3>
+    <div class="proj-tags" id="modalTags"></div>
+    <p class="desc" id="modalDesc"></p>
+    <ul class="details" id="modalDetails"></ul>
+    <div class="modal-actions">
+      <a href="#" id="modalRepo" target="_blank" rel="noopener" class="btn btn-primary btn-sm">GitHub ↗</a>
+      <a href="#" id="modalLive" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Live Demo ↗</a>
     </div>
   </div>
 </div>
 
-<!-- ═══════════ FOOTER ═══════════ -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      Alishbah Waheed
-      <span class="footer-tag">Software Developer &amp; AI Enthusiast</span>
+<!-- ═══════════ RESUME REQUEST MODAL ═══════════ -->
+<div class="modal-overlay resume-modal" id="resumeModal" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+    <button class="modal-close" id="resumeModalClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="resume-form" id="resumeForm">
+      <div class="resume-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15h6M9 11h6"/></svg></div>
+      <h3 id="resumeModalTitle">Get my resume</h3>
+      <p>Drop in your email — I'll send a copy straight to your inbox, and the download will start right away.</p>
+      <div class="field" id="fieldResumeEmail">
+        <label for="resumeEmail">Email address</label>
+        <input type="email" id="resumeEmail" placeholder="you@email.com" autocomplete="email">
+        <span class="field-error">Please enter a valid email.</span>
+      </div>
+      <button class="btn btn-primary magnetic" id="resumeSendBtn" type="button" style="width:100%;">Send &amp; Download</button>
     </div>
 
-    <nav class="footer-links" aria-label="Footer">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="footer-socials">
-      <a href="https://github.com/TheAlishbahWaheed" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-      <a href="https://linkedin.com/in/alishbahwaheed" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
-      <a href="mailto:alishbaw026@gmail.com" aria-label="Email">Email</a>
+    <div class="resume-success" id="resumeSuccess">
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>All set!</h3>
+      <p>Your download has started, and a copy is on its way to your inbox.</p>
+      <button class="btn btn-ghost" id="resumeCloseBtn" type="button" style="width:100%;">Close</button>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> Alishbah Waheed. Designed &amp; built with care.</p>
-  </div>
-</footer>
+</div>
 
-<button id="toTop" aria-label="Back to top">↑</button>
+<a id="resumeDownloadLink" href="resume.pdf" download="Alishbah-Waheed-Resume.pdf" class="sr-only" aria-hidden="true">Download resume</a>
 
-<script src="theme.js" defer></script>
-<script src="loader.js" defer></script>
-<script src="nav.js" defer></script>
-<script src="typing.js" defer></script>
-<script src="reveal.js" defer></script>
-<script src="skills.js" defer></script>
-<script src="particles.js" defer></script>
-<script src="tilt.js" defer></script>
-<script src="projects.js" defer></script>
-<script src="contact.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-<script src="resume.js" defer></script>
-<script src="main.js" defer></script>
+<script src="loader.js"></script>
+<script src="main.js"></script>
+<script src="cursor.js"></script>
+<script src="nav.js"></script>
+<script src="typing.js"></script>
+<script src="reveal.js"></script>
+<script src="particles.js"></script>
+<script src="tilt.js"></script>
+<script src="skills.js"></script>
+<script src="projects.js"></script>
+<script src="resume.js"></script>
+<script src="contact.js"></script>
 </body>
 </html>

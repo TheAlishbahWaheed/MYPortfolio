@@ -1,38 +1,27 @@
-/* tilt.js — subtle 3D tilt hover effect for cards, disabled on touch devices */
+// ============================================================
+// TILT — subtle 3D hover tilt + glow position for project cards
+// ============================================================
 (function () {
-  "use strict";
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!supportsHover || reduceMotion) return;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var isTouch = window.matchMedia && window.matchMedia("(hover: none), (pointer: coarse)").matches;
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isTouch || reduceMotion) return;
-
-    var cards = document.querySelectorAll(".proj-card");
-    var MAX_TILT = 6;
-
-    cards.forEach(function (card) {
-      card.addEventListener("mousemove", function (e) {
-        var rect = card.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width - 0.5;
-        var y = (e.clientY - rect.top) / rect.height - 0.5;
-        var rotateX = (-y * MAX_TILT).toFixed(2);
-        var rotateY = (x * MAX_TILT).toFixed(2);
-        card.style.transform = "perspective(700px) rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) translateY(-4px)";
-
-        var glow = card.querySelector(".proj-card-glow");
-        if (glow) {
-          glow.style.opacity = "0.28";
-          glow.style.top = (e.clientY - rect.top - 110) + "px";
-          glow.style.left = (e.clientX - rect.left - 110) + "px";
-          glow.style.right = "auto";
-        }
-      });
-
-      card.addEventListener("mouseleave", function () {
-        card.style.transform = "";
-        var glow = card.querySelector(".proj-card-glow");
-        if (glow) glow.style.opacity = "";
-      });
+  const cards = document.querySelectorAll('.proj-card, .cert-card, .skill-card');
+  cards.forEach((card) => {
+    let bounds;
+    card.addEventListener('mouseenter', () => { bounds = card.getBoundingClientRect(); });
+    card.addEventListener('mousemove', (e) => {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const px = (e.clientX - bounds.left) / bounds.width;
+      const py = (e.clientY - bounds.top) / bounds.height;
+      const rx = (py - 0.5) * -6;
+      const ry = (px - 0.5) * 6;
+      card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
+      card.style.setProperty('--mx', (px * 100) + '%');
+      card.style.setProperty('--my', (py * 100) + '%');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
     });
   });
 })();

@@ -1,56 +1,54 @@
-/* typing.js — typewriter effect cycling through roles in the hero */
+// ============================================================
+// TYPEWRITER — cycles through roles in the hero subhead
+// ============================================================
 (function () {
-  "use strict";
+  const el = document.getElementById('typedRole');
+  if (!el) return;
 
-  var PHRASES = [
-    "intelligent software.",
-    "AI-powered tools.",
-    "clean, purposeful code.",
-    "web experiences that work."
+  const roles = [
+    'AI-powered tools',
+    'machine learning models',
+    'Flask web applications',
+    'clean, working software'
   ];
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var el = document.getElementById("typewriter");
-    if (!el) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    el.textContent = roles[0];
+    return;
+  }
 
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) {
-      el.textContent = PHRASES[0];
-      return;
-    }
+  let roleIndex = 0;
+  let charIndex = roles[0].length;
+  let deleting = false;
 
-    var phraseIndex = 0;
-    var charIndex = 0;
-    var deleting = false;
-    var TYPE_SPEED = 55;
-    var DELETE_SPEED = 30;
-    var HOLD_TIME = 1600;
+  function step() {
+    const current = roles[roleIndex];
 
-    function tick() {
-      var current = PHRASES[phraseIndex];
-
-      if (!deleting) {
-        charIndex++;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex === current.length) {
-          deleting = true;
-          setTimeout(tick, HOLD_TIME);
-          return;
-        }
-        setTimeout(tick, TYPE_SPEED);
-      } else {
-        charIndex--;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex === 0) {
-          deleting = false;
-          phraseIndex = (phraseIndex + 1) % PHRASES.length;
-          setTimeout(tick, 350);
-          return;
-        }
-        setTimeout(tick, DELETE_SPEED);
+    if (!deleting) {
+      charIndex++;
+      if (charIndex > current.length) {
+        deleting = true;
+        setTimeout(step, 1500);
+        return;
+      }
+    } else {
+      charIndex--;
+      if (charIndex < 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        charIndex = 0;
+        el.textContent = '';
+        setTimeout(step, 260);
+        return;
       }
     }
 
-    tick();
-  });
+    el.textContent = current.slice(0, charIndex);
+    setTimeout(step, deleting ? 32 : 58);
+  }
+
+  el.textContent = '';
+  charIndex = 0;
+  setTimeout(step, 900);
 })();

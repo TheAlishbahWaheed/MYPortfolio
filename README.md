@@ -1,5 +1,6 @@
 # Portfolio Upgrade — Deployment Notes
 
+
 ## What changed
 
 - Full visual redesign: dark, glassmorphic, "AI + software developer" aesthetic

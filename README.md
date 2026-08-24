@@ -1,6 +1,7 @@
 # Portfolio Upgrade — Deployment Notes
 
 ## What changed
+
 - Full visual redesign: dark, glassmorphic, "AI + software developer" aesthetic
   (was a light pastel theme). Same vanilla HTML/CSS/JS stack — no framework
   added, so it drops straight into your existing Vercel project.

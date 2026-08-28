@@ -1,5 +1,6 @@
 # What changed
 
+
 Your content, sections, projects, experience, links, resume flow and overall identity are **100% unchanged** — verified with a diff against the original repo. Everything below is additive scaffolding or behavior, layered on top of your existing dark/glassmorphic design system.
 
 ## New
